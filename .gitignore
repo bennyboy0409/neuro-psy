@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# build
+dist
+dist-ssr
+
+# rohdaten & pipeline (gross, nicht ins repo)
+data/*.pdf
+data/beispiele_img/
+data/skript_img/
+
+# editor / os
+.DS_Store
+*.local
+.vscode/*
+!.vscode/extensions.json

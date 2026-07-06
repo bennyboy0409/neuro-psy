@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Basis-Design: dunkles, ruhiges Lern-UI, mobil-first */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0f172a; /* slate-900 */
+  color: #e2e8f0; /* slate-200 */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* verhindert Zoom-Zurueckspringen auf iOS bei Buttons */
+button {
+  font-family: inherit;
+}
