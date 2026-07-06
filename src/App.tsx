@@ -1,10 +1,42 @@
+import { useState } from "react";
+import { useFortschritt } from "./hooks/useFortschritt";
+import type { UebungFilter } from "./lib/auswahl";
+import Home from "./screens/Home";
+import Uebung from "./screens/Uebung";
+import Pruefung from "./screens/Pruefung";
+
+type View =
+  | { name: "home" }
+  | { name: "uebung"; filter: UebungFilter }
+  | { name: "pruefung" };
+
 export default function App() {
+  const { fortschritt, antworten, zuruecksetzen } = useFortschritt();
+  const [view, setView] = useState<View>({ name: "home" });
+
   return (
-    <div className="min-h-dvh flex items-center justify-center p-6">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold text-slate-100">Psycho-Trainer</h1>
-        <p className="mt-2 text-slate-400">Setup laeuft … gleich geht's los.</p>
-      </div>
+    <div className="min-h-dvh">
+      {view.name === "home" && (
+        <Home
+          fortschritt={fortschritt}
+          onUebung={(filter) => setView({ name: "uebung", filter })}
+          onPruefung={() => setView({ name: "pruefung" })}
+          onReset={zuruecksetzen}
+        />
+      )}
+
+      {view.name === "uebung" && (
+        <Uebung
+          fortschritt={fortschritt}
+          filter={view.filter}
+          onAntwort={antworten}
+          onHome={() => setView({ name: "home" })}
+        />
+      )}
+
+      {view.name === "pruefung" && (
+        <Pruefung onAntwort={antworten} onHome={() => setView({ name: "home" })} />
+      )}
     </div>
   );
 }
