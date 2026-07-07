@@ -1,8 +1,29 @@
 @import "tailwindcss";
 
-/* Basis-Design: dunkles, ruhiges Lern-UI, mobil-first */
+/* ============================================================
+   NEURO — Design-System
+   Ruhig, aber lebendig. Fokus + Belohnung.
+   ============================================================ */
+
 :root {
   color-scheme: dark;
+
+  /* Basis */
+  --bg: #07080f;
+  --surface: 255 255 255; /* fuer rgb() mit alpha */
+  --text: #eef1f8;
+  --muted: #97a0b8;
+
+  /* Akzente */
+  --accent: #7c6bff; /* indigo-violet */
+  --accent-2: #c264ff; /* fuchsia */
+  --good: #2ee6a6; /* mint */
+  --bad: #ff5d73; /* soft rose */
+  --key: #ffcf5c; /* gold – Schluesselwoerter */
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -11,13 +32,134 @@ html {
 
 body {
   margin: 0;
-  background: #0f172a; /* slate-900 */
-  color: #e2e8f0; /* slate-200 */
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
-/* verhindert Zoom-Zurueckspringen auf iOS bei Buttons */
+/* Stimmungsvoller Hintergrund: weiche Farbwolken, fixiert */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 45% at 15% 0%, rgba(124, 107, 255, 0.18), transparent 60%),
+    radial-gradient(55% 40% at 100% 8%, rgba(194, 100, 255, 0.14), transparent 55%),
+    radial-gradient(50% 40% at 50% 100%, rgba(46, 230, 166, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
 button {
   font-family: inherit;
 }
+
+/* ---- Typo-Helfer ---- */
+.font-display {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+.text-gradient {
+  background: linear-gradient(100deg, #fff 10%, var(--accent) 55%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Glas-Karte ---- */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Schluesselwort-Markierung ---- */
+.kw {
+  color: var(--key);
+  font-weight: 600;
+}
+.kw-box {
+  background: rgba(255, 207, 92, 0.14);
+  color: #ffe08a;
+  font-weight: 600;
+  padding: 0.05em 0.35em;
+  border-radius: 0.4em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ============================================================
+   Animationen
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.85); }
+  60% { opacity: 1; transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes good-glow {
+  0% { box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.0); }
+  40% { box-shadow: 0 0 0 4px rgba(46, 230, 166, 0.35), 0 0 40px 0 rgba(46, 230, 166, 0.25); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 230, 166, 0.0); }
+}
+@keyframes draw-check {
+  from { stroke-dashoffset: 30; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--dr)) scale(0.4); }
+}
+@keyframes bar-grow {
+  from { width: 0; }
+}
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.animate-fade-up { animation: fade-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in { animation: fade-in 0.3s ease both; }
+.animate-pop { animation: pop-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-shake { animation: shake 0.4s ease; }
+.animate-good-glow { animation: good-glow 0.9s ease; }
+
+/* gestaffeltes Erscheinen der Aussagen */
+.stagger > * { animation: fade-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.stagger > *:nth-child(3) { animation-delay: 0.14s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* dezente Scrollbar */
+::-webkit-scrollbar { width: 0; height: 0; }

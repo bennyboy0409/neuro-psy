@@ -4,7 +4,7 @@ import type { Frage } from "../types";
 //  OFFIZIELLE Beispielfragen (Goldstandard)
 //  Quelle: avpsy_ba26_Beispielitems.pdf (Uni Wien, Aufnahmepruefung
 //  Bachelor Psychologie 2026). Von Hand transkribiert.
-//  Erklaerungen sind erlaeuternde Ergaenzungen (nicht im PDF).
+//  erklaerung/merksatz/stem unterstuetzen **fett** und ==schluessel==.
 // ============================================================
 
 export const fragenOffiziell: Frage[] = [
@@ -16,7 +16,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Entwicklung",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche der Aussagen über die pränatale Entwicklung eines Menschen ist/sind korrekt?",
+    stem: "Welche der Aussagen über die ==pränatale Entwicklung== eines Menschen ist/sind korrekt?",
     aussagen: [
       { text: "Erst wenn sich die Zygote in der Gebärmutter eingenistet hat, beginnt sie mit der Zellteilung.", istRichtig: false },
       { text: "Sobald sich die Zygote in der Gebärmutter eingenistet hat, beginnt die embryonale Phase.", istRichtig: true },
@@ -24,7 +24,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "In der fötalen Phase liegt der Fokus auf dem Wachstum.", istRichtig: true },
     ],
     erklaerung:
-      "Die Zellteilung beginnt schon direkt nach der Befruchtung, also VOR der Einnistung (a falsch). Mit der Einnistung (Nidation) startet die embryonale Phase (b richtig). Der erste Herzschlag liegt bereits in der embryonalen Phase (ca. 5.–6. Woche), nicht erst in der fötalen (c falsch). Ab der fötalen Phase (ab ~9. Woche) geht es v. a. um Wachstum und Reifung (d richtig).",
+      "Die ==Zellteilung== beginnt schon direkt nach der Befruchtung, also VOR der Einnistung (a falsch). Mit der ==Einnistung== (Nidation) startet die ==embryonale Phase== (b richtig). Der erste Herzschlag liegt bereits in der embryonalen Phase (ca. 5.–6. Woche), nicht erst in der fötalen (c falsch). Ab der ==fötalen Phase== (ab ~9. Woche) geht es v. a. um ==Wachstum== (d richtig).",
+    merksatz: "Reihenfolge: ==Zellteilung== (sofort) → ==Einnistung== → ==embryonale Phase== (Organe, Herzschlag) → ==fötale Phase== (Wachstum).",
   },
   {
     id: "A2",
@@ -33,7 +34,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Geschichte",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Wobei handelt es sich um korrekte Zuordnungen?",
+    stem: "Wobei handelt es sich um korrekte ==Zuordnungen== (Person ↔ Konzept)?",
     aussagen: [
       { text: "Iwan Pawlow ↔ Operante Konditionierung", istRichtig: false },
       { text: "William James ↔ Hermeneutik", istRichtig: false },
@@ -41,7 +42,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Gustav Theodor Fechner ↔ Psychophysik", istRichtig: true },
     ],
     erklaerung:
-      "Pawlow steht für die KLASSISCHE Konditionierung (operante: Thorndike/Skinner) → a falsch. William James gilt als Begründer des Funktionalismus/Pragmatismus, nicht der Hermeneutik → b falsch. Gall begründete die Phrenologie → c richtig. Fechner gilt als Begründer der Psychophysik → d richtig.",
+      "==Pawlow== steht für die ==klassische== Konditionierung (operante = Thorndike/Skinner) → a falsch. ==William James== gilt als Begründer des ==Funktionalismus==, nicht der Hermeneutik → b falsch. ==Gall== begründete die ==Phrenologie== → c richtig. ==Fechner== begründete die ==Psychophysik== → d richtig.",
+    merksatz: "==Pawlow== = klassisch · ==Gall== = Phrenologie (Schädel) · ==Fechner== = Psychophysik · ==James== = Funktionalismus.",
   },
   {
     id: "A3",
@@ -58,7 +60,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "N = 4", istRichtig: false },
     ],
     erklaerung:
-      "Median: bei 6 Werten der Durchschnitt der beiden mittleren (3 und 5) = 4 (a richtig). Mittel: (1+2+3+5+6+7)/6 = 24/6 = 4 (b richtig). Interquartilsabstand: untere Hälfte {1,2,3} → Q1 = 2, obere Hälfte {5,6,7} → Q3 = 6, IQR = 6−2 = 4 (c richtig). N ist die Anzahl der Werte = 6, nicht 4 (d falsch).",
+      "==Median==: bei 6 Werten der Durchschnitt der beiden mittleren (3 und 5) = 4 (a richtig). ==Mittel==: (1+2+3+5+6+7)/6 = 24/6 = 4 (b richtig). ==Interquartilsabstand==: untere Hälfte {1,2,3} → Q1 = 2, obere Hälfte {5,6,7} → Q3 = 6, IQR = 6−2 = 4 (c richtig). ==N== ist die Anzahl der Werte = 6, nicht 4 (d falsch).",
+    merksatz: "==N== = Anzahl der Werte (hier 6). ==Median== = Mitte, ==Mittel== = Summe/N, ==IQR== = Q3 − Q1.",
   },
   {
     id: "A4",
@@ -67,7 +70,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Methoden & Statistik",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche der Anforderungen müssen Hypothesen aufweisen, um als wissenschaftlich zu gelten (nach Hussy et al., 2013)?",
+    stem: "Welche Anforderungen müssen ==Hypothesen== aufweisen, um als wissenschaftlich zu gelten (nach Hussy et al., 2013)?",
     aussagen: [
       { text: "Begründbarkeit", istRichtig: true },
       { text: "Beweisbarkeit", istRichtig: false },
@@ -75,7 +78,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "präzise und widerspruchsfreie Formulierung", istRichtig: true },
     ],
     erklaerung:
-      "Wissenschaftliche Hypothesen müssen begründbar, operationalisierbar (messbar machbar) sowie präzise und widerspruchsfrei formuliert sein (a, c, d richtig). „“ ist KEINE Anforderung – Hypothesen lassen sich nie endgültig beweisen, nur (vorläufig) bestätigen oder widerlegen (b falsch).",
+      "Wissenschaftliche Hypothesen müssen ==begründbar==, ==operationalisierbar== (messbar machbar) sowie ==präzise und widerspruchsfrei== formuliert sein (a, c, d richtig). ==Beweisbarkeit== ist KEINE Anforderung — Hypothesen lassen sich nie endgültig beweisen, nur widerlegen (b falsch).",
+    merksatz: "Man kann eine Hypothese ==nie beweisen==, nur ==widerlegen== (Falsifikation). Darum ist 'Beweisbarkeit' falsch.",
   },
   {
     id: "A5",
@@ -84,7 +88,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Biologische Psychologie",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "Welche der Aussagen zum Aktionspotenzial von Neuronen ist/sind korrekt?",
+    stem: "Welche der Aussagen zum ==Aktionspotenzial== von Neuronen ist/sind korrekt?",
     aussagen: [
       { text: "Unter Overshoot versteht man jenen Zustand, bei dem die intrazelluläre Flüssigkeit im Vergleich zur extrazellulären Flüssigkeit positiv geladen ist.", istRichtig: true },
       { text: "Unter Repolarisation versteht man den Abfall der Polarisierung durch den Ausstrom positiv geladener Kaliumionen.", istRichtig: true },
@@ -92,7 +96,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Sowohl exzitatorische als auch inhibitorische Signale steigern die Wahrscheinlichkeit dafür, dass ein Aktionspotenzial ausgelöst wird.", istRichtig: false },
     ],
     erklaerung:
-      "Overshoot: kurzzeitig ist das Zellinnere positiver als außen (a richtig). Repolarisation: Kalium (K⁺) strömt aus, die Ladung wird wieder negativer (b richtig). Depolarisation geht in die POSITIVE Richtung (weniger negativ), nicht negativ (c falsch). Inhibitorische (hemmende) Signale SENKEN die Wahrscheinlichkeit eines Aktionspotenzials (d falsch).",
+      "==Overshoot==: kurz ist das Zellinnere positiver als außen (a richtig). ==Repolarisation==: ==Kalium (K⁺)== strömt aus, die Ladung wird wieder negativer (b richtig). ==Depolarisation== geht in die ==POSITIVE== Richtung (weniger negativ), nicht negativ (c falsch). ==Inhibitorische== (hemmende) Signale ==SENKEN== die Wahrscheinlichkeit (d falsch).",
+    merksatz: "==Depolarisation== = positiver werden (Richtung Auslösung). ==Inhibitorisch== = hemmend (senkt Wahrscheinlichkeit).",
   },
   {
     id: "A6",
@@ -101,7 +106,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Entwicklung",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Eriksons Stufenmodell der psychosozialen Entwicklung beschreibt verschiedene Entwicklungsaufgaben. Was trifft auf diese zu?",
+    stem: "==Eriksons Stufenmodell== der psychosozialen Entwicklung beschreibt Entwicklungsaufgaben. Was trifft zu?",
     aussagen: [
       { text: "Positives Lösen der aktuellen Krise ist die Grundlage für das Lösen weiterer Entwicklungsaufgaben in anderen Stufen.", istRichtig: true },
       { text: "Im frühen Erwachsenenalter besteht die Herausforderung aus dem Spannungsverhältnis von: Autonomie versus Selbstzweifel.", istRichtig: false },
@@ -109,7 +114,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Im Seniorenalter besteht die Krise aus Intimität versus Isolation.", istRichtig: false },
     ],
     erklaerung:
-      "Bei Erikson baut jede Stufe auf der vorigen auf – eine gut gelöste Krise erleichtert die nächsten (a richtig). Im 1. Lebensjahr geht es um Urvertrauen vs. Urmisstrauen (c richtig). Im frühen Erwachsenenalter ist die Krise Intimität vs. Isolation (nicht „“) (b falsch). Im Seniorenalter geht es um Integrität vs. Verzweiflung (nicht Intimität vs. Isolation) (d falsch).",
+      "Bei Erikson baut jede Stufe auf der vorigen auf (a richtig). Im ==1. Lebensjahr==: ==Urvertrauen vs. Urmisstrauen== (c richtig). Im frühen Erwachsenenalter: ==Intimität vs. Isolation== (nicht 'Autonomie vs. Selbstzweifel') (b falsch). Im ==Seniorenalter==: ==Integrität vs. Verzweiflung== (nicht Intimität vs. Isolation) (d falsch).",
+    merksatz: "Erikson-Enden: Baby = ==Vertrauen==, junges Erwachsen = ==Intimität==, Alter = ==Integrität==.",
   },
   {
     id: "A7",
@@ -118,7 +124,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Lernen",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "In welchem/welchen der folgenden Szenarien wird ein Verhalten im Sinne der operanten Konditionierung positiv bestraft?",
+    stem: "In welchem Szenario wird ein Verhalten im Sinne der operanten Konditionierung ==positiv bestraft==?",
     aussagen: [
       { text: "Einem Kind, das ein anderes Kind geschlagen hat, wird sein Lieblingsspielzeug vorübergehend weggenommen.", istRichtig: false },
       { text: "Nachdem eine jugendliche Person beim wöchentlichen Hausputz mitgeholfen hat, wird das bestehende Handyverbot aufgehoben.", istRichtig: false },
@@ -126,7 +132,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Einer Person wird nach einem Ladendiebstahl die Ableistung von Sozialstunden gerichtlich auferlegt.", istRichtig: true },
     ],
     erklaerung:
-      "„“ = etwas Unangenehmes wird HINZUGEFÜGT, um ein Verhalten zu verringern. Nur d passt (Sozialstunden werden auferlegt). a = negative Bestrafung (etwas Angenehmes wird entzogen). b = negative Verstärkung (Handyverbot wird entfernt). c = positive Verstärkung (Leckerli wird gegeben).",
+      "==Positive Bestrafung== = etwas Unangenehmes wird ==HINZUGEFÜGT==, um Verhalten zu ==verringern==. Nur d passt (Sozialstunden auferlegt). a = ==negative Bestrafung== (Angenehmes entzogen). b = ==negative Verstärkung== (Verbot entfernt). c = ==positive Verstärkung== (Leckerli gegeben).",
+    merksatz: "==positiv== = etwas kommt dazu, ==negativ== = etwas wird weggenommen. ==Verstärkung== = Verhalten steigt, ==Bestrafung== = Verhalten sinkt.",
   },
   {
     id: "A8",
@@ -135,7 +142,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Entwicklung",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche der Aussagen bezüglich Piagets Stufenmodell der Entwicklung ist/sind korrekt?",
+    stem: "Welche der Aussagen bezüglich ==Piagets Stufenmodell== der Entwicklung ist/sind korrekt?",
     aussagen: [
       { text: "Im sensumotorischen Stadium bildet sich die Sprache aus.", istRichtig: false },
       { text: "Im präoperatorischen Stadium lernt das Kind, die Welt in mentalen Repräsentationen abzubilden.", istRichtig: true },
@@ -143,7 +150,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Im formal-operatorischen Stadium erlernen Kinder die Prinzipien der Erhaltung.", istRichtig: false },
     ],
     erklaerung:
-      "Präoperatorisches Stadium (~2–7 J.): Denken in mentalen Repräsentationen/Symbolen (b richtig). Sprache bildet sich erst gegen Ende des sensumotorischen Stadiums bzw. im Übergang aus (a falsch). Abstraktes/hypothetisches Denken gehört zum FORMAL-operatorischen Stadium (c falsch). Die Erhaltung (Konstanz von Menge/Masse) wird im KONKRET-operatorischen Stadium verstanden (d falsch).",
+      "==Präoperatorisch== (~2–7 J.): Denken in ==mentalen Repräsentationen/Symbolen== (b richtig). Sprache bildet sich erst gegen Ende des sensumotorischen Stadiums (a falsch). ==Abstraktes== Denken gehört zum ==formal==-operatorischen Stadium (c falsch). Die ==Erhaltung== (Konstanz) wird im ==konkret==-operatorischen Stadium verstanden (d falsch).",
+    merksatz: "Piaget: sensumotorisch → präoperatorisch (Symbole) → konkret-operatorisch (==Erhaltung==) → formal-operatorisch (==abstrakt==).",
   },
   {
     id: "A9",
@@ -152,7 +160,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Wahrnehmung & Aufmerksamkeit",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "Welche der Aussagen zum Cueing-Paradigma ist/sind korrekt?",
+    stem: "Welche der Aussagen zum ==Cueing-Paradigma== ist/sind korrekt?",
     aussagen: [
       { text: "Als abhängige Variable (AV) wurde die Reaktionszeit auf den Zielreiz gemessen.", istRichtig: true },
       { text: "Das Cueing-Paradigma ist ein klassisches Versuchsdesign aus der Gedächtnisforschung.", istRichtig: false },
@@ -160,7 +168,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Als endogener Hinweisreiz wurde ein Pfeil in der Mitte des Bildschirms dargeboten.", istRichtig: true },
     ],
     erklaerung:
-      "Das Cueing-Paradigma (Posner) stammt aus der AUFMERKSAMKEITSforschung, nicht der Gedächtnisforschung (b falsch). Gemessen wird die Reaktionszeit auf den Zielreiz (a richtig). Valide Bedingung: der Hinweisreiz (Cue) zeigt den korrekten Ort des Zielreizes an (c richtig). Ein zentral dargebotener Pfeil ist ein endogener (Blick nach innen gelenkter) Hinweisreiz (d richtig).",
+      "Das ==Cueing-Paradigma== (Posner) stammt aus der ==Aufmerksamkeits==forschung, nicht der Gedächtnisforschung (b falsch). ==AV== = Reaktionszeit auf den Zielreiz (a richtig). ==Valide== Bedingung: der ==Cue== zeigt den korrekten Ort (c richtig). Ein zentraler ==Pfeil== ist ein ==endogener== Hinweisreiz (d richtig).",
+    merksatz: "==Cueing== = ==Aufmerksamkeit== (Posner), nicht Gedächtnis. ==endogen== = zentraler Pfeil, ==exogen== = Blitz am Ort.",
   },
   {
     id: "A10",
@@ -169,7 +178,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Diagnostik",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche Arten projektiver Verfahren zum Bestimmen von Persönlichkeitseigenschaften gibt es?",
+    stem: "Welche Arten ==projektiver Verfahren== zum Bestimmen von Persönlichkeitseigenschaften gibt es?",
     aussagen: [
       { text: "Form-Deute-Verfahren", istRichtig: true },
       { text: "Explizite Assoziationstests", istRichtig: false },
@@ -177,7 +186,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Verbal-thematische Verfahren", istRichtig: true },
     ],
     erklaerung:
-      "Projektive Verfahren nutzen mehrdeutiges Material, in das die Person „“. Dazu zählen Form-Deute-Verfahren (z. B. Rorschach) und verbal-thematische Verfahren (z. B. TAT) (a, d richtig). Projektive Tests arbeiten IMPLIZIT, nicht mit „“ Assoziationstests (b falsch). Das MMPI-2 ist ein Fragebogen (Selbstbericht), kein projektives Verfahren (c falsch).",
+      "==Projektive Verfahren== nutzen ==mehrdeutiges== Material, in das die Person hineindeutet: ==Form-Deute-Verfahren== (z. B. Rorschach) und ==verbal-thematische== Verfahren (z. B. TAT) (a, d richtig). Projektive Tests sind ==implizit==, nicht 'explizit' (b falsch). Das ==MMPI-2== ist ein ==Fragebogen== (Selbstbericht), kein projektives Verfahren (c falsch).",
+    merksatz: "==Projektiv== = ==implizit== & mehrdeutig (Rorschach, TAT). ==MMPI-2== = Fragebogen = NICHT projektiv.",
   },
   {
     id: "A11",
@@ -186,7 +196,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Persönlichkeit",
     quelle: "offiziell",
     schwierigkeit: 1,
-    stem: "Welche sind Skalen des sog. Big-Five-Modells?",
+    stem: "Welche sind Skalen des sog. ==Big-Five-Modells==?",
     aussagen: [
       { text: "Extraversion", istRichtig: true },
       { text: "Gewissenhaftigkeit", istRichtig: true },
@@ -194,7 +204,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Verträglichkeit", istRichtig: true },
     ],
     erklaerung:
-      "Alle vier gehören zu den Big Five (OCEAN): Offenheit, Gewissenhaftigkeit, Extraversion, Verträglichkeit und Neurotizismus. Hier sind vier davon aufgelistet – alle richtig. Die fehlende fünfte Skala ist Offenheit für Erfahrungen.",
+      "Alle vier gehören zu den ==Big Five (OCEAN)==: Offenheit, Gewissenhaftigkeit, Extraversion, Verträglichkeit, Neurotizismus. Hier sind vier davon — alle richtig. Die fehlende fünfte ist ==Offenheit==.",
+    merksatz: "Big Five = ==OCEAN==: Offenheit, Gewissenhaftigkeit, Extraversion, Verträglichkeit, Neurotizismus.",
   },
   {
     id: "A12",
@@ -203,7 +214,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Geschichte",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "Welche Ansicht/en über den Körper und die Seele vertraten die Orphiker?",
+    stem: "Welche Ansicht/en über Körper und Seele vertraten die ==Orphiker==?",
     aussagen: [
       { text: "Eine Seele braucht nicht zwingend einen Körper.", istRichtig: true },
       { text: "Der Körper wurde gegenüber der Seele als minderwertig betrachtet.", istRichtig: true },
@@ -211,7 +222,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Die Heimat der Seele ist das Diesseits.", istRichtig: false },
     ],
     erklaerung:
-      "Die Orphiker sahen die Seele als unsterblich und unabhängig vom Körper an; der Körper galt als „“ der Seele und damit als minderwertig (a, b, c richtig). Die eigentliche Heimat der Seele ist nach dieser Vorstellung das Jenseits, nicht das Diesseits (d falsch).",
+      "Die ==Orphiker== sahen die Seele als ==unsterblich== und ==unabhängig vom Körper==; der Körper galt als ==Gefängnis== der Seele, also minderwertig (a, b, c richtig). Die Heimat der Seele ist das ==Jenseits==, nicht das Diesseits (d falsch).",
+    merksatz: "Orphiker: Seele = ==unsterblich==, Körper = ==Gefängnis==, Heimat = ==Jenseits==.",
   },
   {
     id: "A13",
@@ -220,7 +232,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Sozialpsychologie",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche der Aussagen zur Sozialpsychologie ist/sind korrekt?",
+    stem: "Welche der Aussagen zur ==Sozialpsychologie== ist/sind korrekt?",
     aussagen: [
       { text: "Im Unterschied zur Persönlichkeitspsychologie spielen in der Sozialpsychologie situative Faktoren eine wichtige Rolle.", istRichtig: true },
       { text: "Die Soziale-Austausch-Theorie ist ein Erklärungsversuch für den Einfluss von Minderheiten.", istRichtig: false },
@@ -228,7 +240,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Die Sozialpsychologie beschäftigt sich mit Themen wie Konformität, Stereotypen oder Deindividuation.", istRichtig: true },
     ],
     erklaerung:
-      "Die Sozialpsychologie betont die SITUATION (a richtig), untersucht Prozesse zwischen und innerhalb von Gruppen (c richtig) und Themen wie Konformität, Stereotype, Deindividuation (d richtig). Die Soziale-Austausch-Theorie erklärt Beziehungen über Kosten-Nutzen-Abwägungen, NICHT speziell den Einfluss von Minderheiten (b falsch).",
+      "Die Sozialpsychologie betont die ==Situation== (a richtig), untersucht ==Inter-/Intragruppenprozesse== (c richtig) und Themen wie ==Konformität, Stereotype, Deindividuation== (d richtig). Die ==Soziale-Austausch-Theorie== erklärt Beziehungen über ==Kosten-Nutzen==, nicht den Einfluss von Minderheiten (b falsch).",
+    merksatz: "Sozialpsychologie = Macht der ==Situation==. Soziale-Austausch-Theorie = ==Kosten-Nutzen== in Beziehungen.",
   },
   {
     id: "A14",
@@ -237,7 +250,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Biologische Psychologie",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "Welche der Zellen befindet/befinden sich in der Retina oder dem Sehnerv?",
+    stem: "Welche der Zellen befindet/befinden sich in der ==Retina== oder dem Sehnerv?",
     aussagen: [
       { text: "Müller-Zellen", istRichtig: true },
       { text: "Amakrinzellen", istRichtig: true },
@@ -245,7 +258,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Horizontalzellen", istRichtig: true },
     ],
     erklaerung:
-      "Alle vier Zelltypen kommen in der Netzhaut (Retina) vor: Müller-Zellen (Stützzellen), Amakrin- und Horizontalzellen (Verschaltung/Querverbindungen) sowie Ganglienzellen, deren Axone den Sehnerv bilden. Daher sind alle vier richtig.",
+      "Alle vier kommen in der ==Netzhaut (Retina)== vor: ==Müller-Zellen== (Stützzellen), ==Amakrin-== und ==Horizontalzellen== (Querverschaltung) sowie ==Ganglienzellen==, deren Axone den ==Sehnerv== bilden. Daher alle vier richtig.",
+    merksatz: "Retina-Zellen: Müller, Amakrin, Horizontal, Ganglien — Ganglienzellen-Axone = ==Sehnerv==.",
   },
   {
     id: "A15",
@@ -254,7 +268,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Sozialpsychologie",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Welche der Zuordnungen sozialpsychologischer Experimente ist/sind korrekt?",
+    stem: "Welche der ==Zuordnungen== sozialpsychologischer Experimente ist/sind korrekt?",
     aussagen: [
       { text: "Minimalgruppenparadigma ↔ Experimente von Tajfel", istRichtig: true },
       { text: "Gehorsam gegenüber Autoritäten ↔ Experimente von Milgram", istRichtig: true },
@@ -262,7 +276,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Soziale Rollen ↔ Stanford Gefängnisexperiment", istRichtig: true },
     ],
     erklaerung:
-      "Tajfel = Minimalgruppenparadigma (a richtig). Milgram = Gehorsam gegenüber Autoritäten (b richtig). Zimbardo = Stanford-Gefängnisexperiment zu sozialen Rollen (d richtig). Asch untersuchte KONFORMITÄT (Linienurteile), nicht speziell Intergruppenprozesse – diese stehen eher für Sherif/Tajfel (c falsch).",
+      "==Tajfel== = Minimalgruppenparadigma (a richtig). ==Milgram== = Gehorsam gegenüber Autoritäten (b richtig). ==Zimbardo== = Stanford-Gefängnisexperiment / soziale Rollen (d richtig). ==Asch== untersuchte ==Konformität== (Linienurteile), nicht Intergruppenprozesse (c falsch).",
+    merksatz: "==Milgram== = Gehorsam · ==Tajfel== = Minimalgruppen · ==Zimbardo== = Rollen (Gefängnis) · ==Asch== = Konformität (Linien).",
   },
 
   // ---------------------- TEIL B ----------------------
@@ -273,16 +288,17 @@ export const fragenOffiziell: Frage[] = [
     thema: "Tabellen lesen",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Vier Fragen werden von fünf Personen bearbeitet und können jeweils mit 1 = stimme zu, 2 = keine Meinung, 3 = stimme nicht zu beantwortet werden. Welche der folgenden Aussagen ist/sind für die erhobenen Daten A zutreffend? (Reihenfolge je Person: Frage 1; Frage 2; Frage 3; Frage 4)",
+    stem: "Vier Fragen werden von fünf Personen bearbeitet, jeweils mit 1 = stimme zu, 2 = keine Meinung, 3 = stimme nicht zu. Welche Aussagen sind für die Daten A zutreffend? (Reihenfolge je Person: Frage 1; 2; 3; 4)",
     stemZusatz: "A = { (1;1;2;1) (2;1;3;1) (3;2;1;1) (1;1;3;3) (2;1;3;1) }",
     aussagen: [
       { text: "Frage 4 erhielt gleich viele Zustimmungen wie Frage 2.", istRichtig: true },
-      { text: "„“ war die seltenste Antwort.", istRichtig: false },
+      { text: "„Stimme nicht zu“ war die seltenste Antwort.", istRichtig: false },
       { text: "Die wenigsten Zustimmungen gab es bei Frage 3.", istRichtig: true },
       { text: "Frage 2 erhielt mehr Antworten als Frage 3.", istRichtig: false },
     ],
     erklaerung:
-      "Zustimmung (= 1) pro Frage: F1 = 2, F2 = 4, F3 = 1, F4 = 4. Also F4 = F2 = 4 (a richtig) und F3 hat die wenigsten (c richtig). Antworthäufigkeiten insgesamt: „“ (3) kommt 5-mal vor, „“ (2) nur 4-mal – „“ ist die seltenste, nicht „“ (b falsch). Beide Fragen wurden von allen 5 Personen beantwortet, also gleich viele Antworten (d falsch).",
+      "==Zustimmung (=1)== pro Frage: F1=2, F2=4, F3=1, F4=4. Also F4=F2=4 (a richtig) und F3 hat die wenigsten (c richtig). Häufigkeiten gesamt: 'stimme nicht zu' (3) = 5×, 'keine Meinung' (2) = 4× — ==keine Meinung ist am seltensten== (b falsch). Alle 5 Personen antworten auf beide Fragen → gleich viele (d falsch).",
+    merksatz: "Erst die Spalte pro Frage zählen. ==Zustimmung== = nur die 1er. Alle antworten = gleiche Anzahl Antworten.",
   },
   {
     id: "B2",
@@ -291,7 +307,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Statistik-Grundlagen",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Eine „“ ist eine Null-Eins-Codierung kategorialer Variablen. Jede Merkmalsausprägung wird dabei gesondert nach „“ beurteilt. Nehmen Sie an, Sie haben eine Variable mit drei Stufen, z. B. Religion (römisch-katholisch, Islam, ohne Bekenntnis). Welche Kodierung würde eine Person erhalten, für die „“ zutrifft? (Reihenfolge: römisch-katholisch; Islam; ohne Bekenntnis)",
+    stem: "Eine ==Dummy-Codierung== ist eine 0/1-Codierung: pro Ausprägung ==vorhanden = 1 / nicht vorhanden = 0==. Eine Variable hat drei Stufen: Religion (römisch-katholisch, Islam, ohne Bekenntnis). Welche Kodierung erhält eine Person „ohne Bekenntnis“? (Reihenfolge: röm.-kath.; Islam; ohne Bekenntnis)",
     aussagen: [
       { text: "1  1  0", istRichtig: false },
       { text: "0  0  0", istRichtig: false },
@@ -299,7 +315,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "1  0  0", istRichtig: false },
     ],
     erklaerung:
-      "Bei der Reihenfolge (römisch-katholisch; Islam; ohne Bekenntnis) gilt „“. Für eine Person „“ ist nur die dritte Stufe vorhanden: 0  0  1 (c richtig). Alle anderen Muster codieren eine andere oder gar keine Ausprägung.",
+      "Reihenfolge (röm.-kath.; Islam; ohne Bekenntnis): nur die ==dritte Stufe== ist vorhanden → ==0  0  1== (c richtig). Genau eine 1 an der zutreffenden Stelle, sonst 0.",
+    merksatz: "==Dummy== = genau eine ==1== an der Stelle der zutreffenden Kategorie, der Rest ==0==.",
   },
   {
     id: "B3",
@@ -308,7 +325,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Statistik-Grundlagen",
     quelle: "offiziell",
     schwierigkeit: 1,
-    stem: "Ein Merkmal ist eine Eigenschaft, die zur Beschreibung von Objekten dienen kann. Eine Merkmalsausprägung ist der Wert, den ein Merkmal annehmen kann. Nehmen Sie an, man möchte Euro-Münzen beschreiben. Bei welcher der nachstehenden Angaben handelt es sich um eine Merkmalsausprägung?",
+    stem: "Ein ==Merkmal== ist eine Eigenschaft; eine ==Merkmalsausprägung== ist der konkrete Wert, den ein Merkmal annimmt. Man beschreibt Euro-Münzen. Was davon ist eine ==Merkmalsausprägung==?",
     aussagen: [
       { text: "Material", istRichtig: false },
       { text: "Durchmesser", istRichtig: false },
@@ -316,7 +333,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "10 Cent", istRichtig: true },
     ],
     erklaerung:
-      "„“ und „“ sind MERKMALE (Eigenschaften), noch keine konkreten Werte (a, b falsch). „“ ist eine Ausprägung des Merkmals Gewicht, „“ eine Ausprägung des Merkmals Wert (c, d richtig).",
+      "==Material== und ==Durchmesser== sind ==Merkmale== (Eigenschaften), noch keine Werte (a, b falsch). ==1 Gramm== ist eine Ausprägung von Gewicht, ==10 Cent== eine Ausprägung von Wert (c, d richtig).",
+    merksatz: "==Merkmal== = die Frage (Gewicht?), ==Ausprägung== = die Antwort mit Zahl + Einheit (1 Gramm).",
   },
   {
     id: "B5",
@@ -325,7 +343,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Rechenregeln",
     quelle: "offiziell",
     schwierigkeit: 2,
-    stem: "Zu den Regeln für das Rechnen mit Summen gehört auch folgende: Σ(c·Xᵢ) = c·ΣXᵢ, wobei c für eine Konstante steht und Xᵢ für beliebige Werte von X. Wenn man also z. B. jeden Wert Xᵢ mit der Konstante 9 multipliziert, dann bekommt man?",
+    stem: "Für Summen gilt: Σ(c·Xᵢ) = c·ΣXᵢ (c = Konstante). Wenn man jeden Wert Xᵢ mit der Konstante ==9== multipliziert, bekommt man?",
     aussagen: [
       { text: "9 · (X₁ + X₂ + X₃ + … + Xₙ)", istRichtig: true },
       { text: "Xᵢ · Σ9", istRichtig: false },
@@ -333,7 +351,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "9 · ΣXᵢ", istRichtig: true },
     ],
     erklaerung:
-      "Σ(9·Xᵢ) = 9·ΣXᵢ – die Konstante 9 darf vor die Summe gezogen werden (d richtig). Und 9·ΣXᵢ ist genau 9·(X₁+X₂+…+Xₙ) (a richtig). Die Varianten b und c verändern den Ausdruck falsch (z. B. multipliziert c zusätzlich noch einmal mit 9).",
+      "==Σ(9·Xᵢ) = 9·ΣXᵢ== — die Konstante darf vor die Summe (d richtig). Und 9·ΣXᵢ ist genau 9·(X₁+…+Xₙ) (a richtig). b und c verändern den Ausdruck falsch (c multipliziert doppelt mit 9).",
+    merksatz: "Konstante darf ==vor die Summe== gezogen werden — aber nur ==einmal==.",
   },
   {
     id: "B7",
@@ -342,11 +361,11 @@ export const fragenOffiziell: Frage[] = [
     thema: "Nominalskala",
     quelle: "offiziell",
     schwierigkeit: 3,
-    stem: "Eine Nominalskala bildet nur Gleichheit bzw. Unterschiedlichkeit von Merkmalsausprägungen ab – die Höhe der Zahlen ist egal, gleiche Kategorie = gleiche Zahl, verschiedene Kategorie = verschiedene Zahl. Bei einem Fragebogen wurde die Nationalität der ersten fünf Teilnehmer:innen erhoben. Welche der folgenden Nominalskalierungen der Nationalität ist/sind gemäß dieser Beschreibung korrekt?",
+    stem: "Eine ==Nominalskala== bildet nur ==Gleichheit / Unterschiedlichkeit== ab — gleiche Kategorie = gleiche Zahl, verschiedene Kategorie = verschiedene Zahl; die Höhe der Zahl ist egal. Welche Skalierungen der Nationalität sind korrekt?",
     tabelle: {
       kopf: ["", "TN1", "TN2", "TN3", "TN4", "TN5"],
       zeilen: [
-        ["Nationalität", "Deutschland", "Österreich", "Schweiz", "Deutschland", "Italien"],
+        ["Nationalität", "DE", "AT", "CH", "DE", "IT"],
         ["Skalierung A", "1", "2", "3", "1", "4"],
         ["Skalierung B", "10", "5", "15", "10", "20"],
         ["Skalierung C", "4", "5", "6", "7", "8"],
@@ -360,7 +379,8 @@ export const fragenOffiziell: Frage[] = [
       { text: "Skalierung B ist korrekt.", istRichtig: true },
     ],
     erklaerung:
-      "Regel: TN1 und TN4 (beide Deutschland) müssen dieselbe Zahl haben, alle anderen Nationalitäten verschiedene Zahlen. A (1,2,3,1,4): TN1 = TN4 = 1 ✓ → korrekt. B (10,5,15,10,20): TN1 = TN4 = 10 ✓ → korrekt. D (99,98,100,99,2): TN1 = TN4 = 99 ✓ → korrekt. C (4,5,6,7,8): TN1 = 4, TN4 = 7, obwohl beide Deutschland → falsch.",
+      "Regel: ==TN1 und TN4 (beide DE) müssen dieselbe Zahl== haben, alle anderen verschiedene. A, B, D erfüllen das (TN1=TN4). ==C== gibt DE zwei verschiedene Zahlen (4 und 7) → falsch.",
+    merksatz: "==Nominal==: gleiche Kategorie ⇒ gleiche Zahl. Prüfe nur, ob die beiden ==DE== dieselbe Zahl haben.",
   },
   {
     id: "B8",
@@ -369,7 +389,7 @@ export const fragenOffiziell: Frage[] = [
     thema: "Verhältnis/Anteil",
     quelle: "offiziell",
     schwierigkeit: 1,
-    stem: "Um den Grad der Übereinstimmung (U) zwischen zwei Beobachter:innen zu messen, bildet man das Verhältnis von übereinstimmenden Aussagen zur Gesamtzahl der Aussagen. Nehmen Sie an, die Beobachter:innen stimmen in 90 Fällen überein und in 30 Fällen nicht überein. Der Grad der Übereinstimmung beträgt dann:",
+    stem: "Der ==Grad der Übereinstimmung== U = übereinstimmende Aussagen / Gesamtzahl. Zwei Beobachter:innen stimmen in ==90== Fällen überein und in ==30== nicht. U beträgt?",
     aussagen: [
       { text: "U = 0,33", istRichtig: false },
       { text: "U = 0,25", istRichtig: false },
@@ -377,6 +397,7 @@ export const fragenOffiziell: Frage[] = [
       { text: "U = 3,00", istRichtig: false },
     ],
     erklaerung:
-      "Gesamtzahl = 90 (übereinstimmend) + 30 (nicht übereinstimmend) = 120. U = übereinstimmend / gesamt = 90/120 = 0,75 (c richtig). 0,33 wäre 30/90, 0,25 wäre 30/120, 3,00 wäre 90/30 – alle falsch.",
+      "==Gesamt== = 90 + 30 = 120. ==U = 90 / 120 = 0,75== (c richtig). Der Nenner ist immer das ==Ganze== (120), nicht nur ein Teil.",
+    merksatz: "==Anteil== = Teil / ==Ganzes==. Ganzes = überein + nicht überein = 120.",
   },
 ];

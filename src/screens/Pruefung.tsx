@@ -4,6 +4,7 @@ import type { Antworten } from "../lib/scoring";
 import { bewerteFrage } from "../lib/scoring";
 import { fuerPruefung, PRUEFUNG_PLAN, PLATZ_GRENZE_PROZENT } from "../lib/auswahl";
 import FrageCard from "../components/FrageCard";
+import Icon from "../components/Icon";
 
 interface Props {
   onAntwort: (frageId: string, richtig: boolean) => void;
@@ -11,7 +12,8 @@ interface Props {
 }
 
 const LEER: Antworten = [null, null, null, null];
-const SEKUNDEN_PRO_FRAGE = (PRUEFUNG_PLAN.minuten * 60) / (PRUEFUNG_PLAN.A + PRUEFUNG_PLAN.B + PRUEFUNG_PLAN.C); // = 150 s
+const SEKUNDEN_PRO_FRAGE =
+  (PRUEFUNG_PLAN.minuten * 60) / (PRUEFUNG_PLAN.A + PRUEFUNG_PLAN.B + PRUEFUNG_PLAN.C); // 150 s
 
 export default function Pruefung({ onAntwort, onHome }: Props) {
   const satz = useMemo(() => fuerPruefung(), []);
@@ -23,14 +25,12 @@ export default function Pruefung({ onAntwort, onHome }: Props) {
   const [abgegeben, setAbgegeben] = useState(false);
   const abgegebenRef = useRef(false);
 
-  // Timer: jede Sekunde runterzählen …
   useEffect(() => {
     if (abgegeben) return;
     const t = setInterval(() => setRest((r) => Math.max(0, r - 1)), 1000);
     return () => clearInterval(t);
   }, [abgegeben]);
 
-  // … und bei 0 automatisch abgeben (sauber getrennt vom Updater).
   useEffect(() => {
     if (rest === 0 && !abgegeben) abgeben();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,7 +39,6 @@ export default function Pruefung({ onAntwort, onHome }: Props) {
   function abgeben() {
     if (abgegebenRef.current) return;
     abgegebenRef.current = true;
-    // Fortschritt für jede Frage verbuchen
     for (const f of satz.fragen) {
       const { alleKorrekt } = bewerteFrage(f, antwortenMap[f.id] ?? LEER);
       onAntwort(f.id, alleKorrekt);
@@ -49,11 +48,9 @@ export default function Pruefung({ onAntwort, onHome }: Props) {
 
   if (satz.fragen.length === 0) {
     return (
-      <div className="mx-auto max-w-md px-4 pt-16 text-center">
-        <p className="text-slate-200">Für die Prüfung sind noch keine Fragen vorhanden.</p>
-        <button onClick={onHome} className="mt-4 rounded-xl bg-slate-700 px-4 py-2 text-slate-100">
-          Zurück
-        </button>
+      <div className="mx-auto max-w-md px-4 pt-20 text-center">
+        <p className="text-slate-300">Für die Prüfung sind noch keine Fragen vorhanden.</p>
+        <button onClick={onHome} className="mt-4 rounded-xl bg-white/10 px-5 py-2.5 text-slate-100">Zurück</button>
       </div>
     );
   }
@@ -68,6 +65,7 @@ export default function Pruefung({ onAntwort, onHome }: Props) {
   const min = Math.floor(rest / 60);
   const sek = rest % 60;
   const knapp = rest <= 60;
+  const progress = Math.round((beantwortet / satz.fragen.length) * 100);
 
   function setzeAntwort(i: number, wert: boolean) {
     setAntwortenMap((m) => {
@@ -79,72 +77,55 @@ export default function Pruefung({ onAntwort, onHome }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-md px-4 pb-10">
-      <header className="pt-4 pb-3 flex items-center gap-3">
-        <button
-          onClick={() => {
-            if (confirm("Prüfung abbrechen? Dein Zwischenstand geht verloren.")) onHome();
-          }}
-          className="rounded-lg bg-slate-800 ring-1 ring-slate-700 w-9 h-9 grid place-items-center text-slate-300"
-          aria-label="Abbrechen"
-        >
-          ✕
-        </button>
-        <div>
-          <p className="text-xs text-slate-400">Prüfungs-Simulation</p>
-          <p className="text-sm text-slate-200">{beantwortet}/{satz.fragen.length} beantwortet</p>
+    <div className="mx-auto max-w-md px-4 pb-12">
+      <header className="pt-4 pb-3">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => { if (confirm("Prüfung abbrechen? Dein Zwischenstand geht verloren.")) onHome(); }}
+            className="rounded-xl glass w-9 h-9 grid place-items-center text-slate-300 active:scale-90 transition"
+            aria-label="Abbrechen"
+          >
+            <Icon name="x" size={18} />
+          </button>
+          <div className="flex-1">
+            <p className="text-[11px] uppercase tracking-[0.14em] text-slate-500">Prüfungs-Simulation</p>
+            <p className="text-sm text-slate-300 tabular-nums">{beantwortet} / {satz.fragen.length} beantwortet</p>
+          </div>
+          <div className={`inline-flex items-center gap-1.5 font-mono font-bold tabular-nums rounded-xl px-3 py-2 ${knapp ? "bg-rose-500/20 text-rose-300 ring-1 ring-rose-400/40 animate-pulse" : "glass text-slate-200"}`}>
+            <Icon name="timer" size={15} />
+            {min}:{String(sek).padStart(2, "0")}
+          </div>
         </div>
-        <div
-          className={`ml-auto font-mono font-bold text-lg tabular-nums rounded-lg px-3 py-1.5 ring-1 ${
-            knapp ? "bg-rose-500/20 text-rose-300 ring-rose-500/40" : "bg-slate-800 text-slate-200 ring-slate-700"
-          }`}
-        >
-          {min}:{String(sek).padStart(2, "0")}
+        <div className="mt-3 h-1.5 rounded-full bg-white/10 overflow-hidden">
+          <div className="h-full rounded-full bg-gradient-to-r from-indigo-400 to-violet-400 transition-[width] duration-500" style={{ width: `${progress}%` }} />
         </div>
       </header>
 
-      <FrageCard
-        frage={frage}
-        antworten={antworten}
-        onAntwort={setzeAntwort}
-        geprueft={false}
-        nummer={{ aktuell: index + 1, gesamt: satz.fragen.length }}
-      />
+      <div key={frage.id} className="animate-fade-up">
+        <FrageCard frage={frage} antworten={antworten} onAntwort={setzeAntwort} geprueft={false} nummer={{ aktuell: index + 1, gesamt: satz.fragen.length }} />
+      </div>
 
       <div className="mt-4 flex gap-3">
         <button
           onClick={() => setIndex((i) => Math.max(0, i - 1))}
           disabled={index === 0}
-          className="rounded-xl bg-slate-800 ring-1 ring-slate-700 px-4 py-3 text-slate-200 disabled:opacity-40"
+          className="rounded-2xl glass px-4 py-3 text-slate-200 disabled:opacity-30 active:scale-95 transition"
         >
-          ←
+          <Icon name="arrowLeft" size={18} />
         </button>
         {index + 1 < satz.fragen.length ? (
-          <button
-            onClick={() => setIndex((i) => i + 1)}
-            className="flex-1 rounded-xl bg-sky-500 px-4 py-3 text-white font-semibold active:bg-sky-600"
-          >
-            Weiter
+          <button onClick={() => setIndex((i) => i + 1)} className="flex-1 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-3 text-white font-semibold active:scale-[0.98] transition inline-flex items-center justify-center gap-2">
+            Weiter <Icon name="arrowRight" size={18} />
           </button>
         ) : (
-          <button
-            onClick={() => {
-              if (confirm("Prüfung jetzt abgeben und auswerten?")) abgeben();
-            }}
-            className="flex-1 rounded-xl bg-emerald-500 px-4 py-3 text-white font-semibold active:bg-emerald-600"
-          >
-            Abgeben
+          <button onClick={() => { if (confirm("Prüfung jetzt abgeben und auswerten?")) abgeben(); }} className="flex-1 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-3 text-white font-semibold active:scale-[0.98] transition">
+            Abgeben & auswerten
           </button>
         )}
       </div>
 
       {index + 1 < satz.fragen.length && (
-        <button
-          onClick={() => {
-            if (confirm("Prüfung jetzt abgeben und auswerten?")) abgeben();
-          }}
-          className="mt-3 w-full text-sm text-slate-400 hover:text-slate-200"
-        >
+        <button onClick={() => { if (confirm("Prüfung jetzt abgeben und auswerten?")) abgeben(); }} className="mt-3 w-full text-sm text-slate-600 hover:text-slate-400 transition">
           Früher abgeben
         </button>
       )}
@@ -172,15 +153,11 @@ function Auswertung({
   for (const f of satz.fragen) {
     const { alleKorrekt } = bewerteFrage(f, antwortenMap[f.id] ?? LEER);
     proTeil[f.teil].gesamt++;
-    if (alleKorrekt) {
-      proTeil[f.teil].korrekt++;
-      gesamtKorrekt++;
-    }
+    if (alleKorrekt) { proTeil[f.teil].korrekt++; gesamtKorrekt++; }
   }
 
   const gesamt = satz.fragen.length;
   const prozent = Math.round((gesamtKorrekt / gesamt) * 100);
-
   const band =
     prozent >= 75
       ? { text: "Stark! Das liegt im Bereich, den man für einen Platz braucht.", farbe: "text-emerald-300" }
@@ -189,64 +166,57 @@ function Auswertung({
       : { text: "Da geht noch was. Dranbleiben und die Fehler gezielt wiederholen.", farbe: "text-rose-300" };
 
   return (
-    <div className="mx-auto max-w-md px-4 pb-10">
-      <header className="pt-6 pb-4">
-        <h1 className="text-xl font-bold text-slate-100">Auswertung</h1>
+    <div className="mx-auto max-w-md px-4 pb-12">
+      <header className="pt-7 pb-4 flex items-center gap-3">
+        <span className="grid place-items-center w-10 h-10 rounded-xl bg-white/10 text-amber-300"><Icon name="trophy" size={20} /></span>
+        <h1 className="text-xl font-display font-semibold text-white">Auswertung</h1>
       </header>
 
-      <div className="rounded-2xl bg-gradient-to-br from-sky-500/15 to-violet-500/15 ring-1 ring-slate-700/60 p-5 text-center">
-        <p className="text-5xl font-extrabold text-white">{prozent} %</p>
-        <p className="text-slate-300 mt-1">
-          {gesamtKorrekt} von {gesamt} Fragen komplett richtig
-        </p>
-        <p className={`mt-3 text-sm font-medium ${band.farbe}`}>{band.text}</p>
+      <div className="relative overflow-hidden rounded-3xl glass p-6 text-center animate-pop">
+        <div className="absolute -left-10 -top-10 w-40 h-40 rounded-full bg-indigo-500/20 blur-3xl" />
+        <div className="relative">
+          <p className="text-6xl font-display font-semibold text-gradient">{prozent}%</p>
+          <p className="text-slate-400 mt-1">{gesamtKorrekt} von {gesamt} komplett richtig</p>
+          <p className={`mt-3 text-sm font-medium ${band.farbe}`}>{band.text}</p>
+        </div>
       </div>
 
-      {/* Pro Teil */}
-      <div className="mt-4 space-y-2">
+      <div className="mt-4 space-y-2.5">
         {teile.map((t) => {
           const d = proTeil[t];
           if (d.gesamt === 0) return null;
           const p = Math.round((d.korrekt / d.gesamt) * 100);
           return (
-            <div key={t} className="rounded-xl bg-slate-800/60 ring-1 ring-slate-700/60 p-3">
-              <div className="flex justify-between text-sm text-slate-200 mb-1.5">
-                <span>Teil {t}</span>
-                <span>
-                  {d.korrekt}/{d.gesamt} ({p} %)
-                </span>
+            <div key={t} className="glass rounded-2xl p-3.5">
+              <div className="flex justify-between text-sm text-slate-200 mb-2">
+                <span className="font-medium">Teil {t}</span>
+                <span className="tabular-nums text-slate-400">{d.korrekt}/{d.gesamt} · {p}%</span>
               </div>
-              <div className="h-2 rounded-full bg-slate-700 overflow-hidden">
-                <div className="h-full bg-sky-400" style={{ width: `${p}%` }} />
+              <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div className="h-full rounded-full bg-gradient-to-r from-sky-400 to-violet-400 transition-[width] duration-700" style={{ width: `${p}%` }} />
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Ehrlicher Hinweis */}
-      <div className="mt-4 rounded-xl bg-slate-800/40 ring-1 ring-slate-700/50 p-3.5 text-xs text-slate-400 leading-relaxed">
+      <div className="mt-4 rounded-2xl bg-white/[0.03] ring-1 ring-white/10 p-4 text-xs text-slate-400 leading-relaxed">
         <p>
-          <span className="text-slate-300 font-medium">Ehrlich eingeordnet:</span> Für einen
-          Studienplatz brauchst du grob die <span className="text-slate-200">Top ~18 %</span> aller
-          Teilnehmenden. Ein <span className="text-slate-200">echter Prozentrang</span> lässt sich
-          aber nur mit vielen Testpersonen berechnen — den haben wir hier nicht. Darum siehst du
-          oben deinen <span className="text-slate-200">Rohwert</span> (% komplett richtig), nicht
-          einen erfundenen Rang.
+          <span className="text-slate-200 font-medium">Ehrlich eingeordnet:</span> Für einen Studienplatz
+          brauchst du grob die <span className="text-slate-200">Top ~18 %</span>. Ein{" "}
+          <span className="text-slate-200">echter Prozentrang</span> lässt sich nur mit vielen Testpersonen
+          berechnen — den haben wir hier nicht. Darum oben dein{" "}
+          <span className="text-slate-200">Rohwert</span> (% komplett richtig), keine erfundene Zahl.
         </p>
         {!satz.vollstaendig && (
           <p className="mt-2">
-            Hinweis: Diese Simulation nutzt aktuell {gesamt} statt der geplanten{" "}
-            {PRUEFUNG_PLAN.A + PRUEFUNG_PLAN.B + PRUEFUNG_PLAN.C} Fragen — es kommen noch welche
-            dazu. Grober Richtwert fürs Bestehen: über {PLATZ_GRENZE_PROZENT} % Rohwert.
+            Diese Simulation nutzt aktuell {gesamt} statt {PRUEFUNG_PLAN.A + PRUEFUNG_PLAN.B + PRUEFUNG_PLAN.C} Fragen —
+            es kommen noch welche dazu. Richtwert fürs Bestehen: über {PLATZ_GRENZE_PROZENT} % Rohwert.
           </p>
         )}
       </div>
 
-      <button
-        onClick={onHome}
-        className="mt-5 w-full rounded-xl bg-violet-500 px-4 py-3 text-white font-semibold active:bg-violet-600"
-      >
+      <button onClick={onHome} className="mt-5 w-full rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-3.5 text-white font-semibold active:scale-[0.98] transition">
         Zur Startseite
       </button>
     </div>

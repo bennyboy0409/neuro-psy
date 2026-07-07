@@ -32,8 +32,10 @@ export interface Frage {
   tabelle?: { kopf: string[]; zeilen: string[][] };
   /** GENAU 4 Aussagen. */
   aussagen: [Aussage, Aussage, Aussage, Aussage];
-  /** Erklaerung, wird nach dem Pruefen gezeigt. */
+  /** Erklaerung, wird nach dem Pruefen gezeigt. Unterstuetzt **fett** und ==schluessel==. */
   erklaerung: string;
+  /** Kurzer, praegnanter Merksatz / die Kern-Verbindung. Poppt bei Fehlern auf. */
+  merksatz?: string;
   schwierigkeit: 1 | 2 | 3;
   quelle: "offiziell" | "generiert";
   /** Bei generierten Fragen: Skript-Belegstelle (Kapitel/Seite). */
