@@ -1,12 +1,13 @@
 import type { Frage, Fortschritt, Karteikarte, Teil } from "../types";
 import { fragenOffiziell } from "../data/fragenOffiziell";
+import { fragenGeneriert } from "../data/fragenGeneriert";
 import { karteikarten } from "../data/karteikarten";
 import { fehlerHeuteIds } from "./fortschritt";
 import { istFaellig } from "./srs";
 
-/** Alle aktuell verfügbaren Fragen (später kommen generierte dazu). */
+/** Alle aktuell verfügbaren Fragen (offiziell + generiert). */
 export function alleFragen(): Frage[] {
-  return [...fragenOffiziell];
+  return [...fragenOffiziell, ...fragenGeneriert];
 }
 
 function mische<T>(arr: T[]): T[] {
