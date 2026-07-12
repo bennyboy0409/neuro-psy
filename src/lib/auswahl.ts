@@ -1,6 +1,8 @@
-import type { Frage, Fortschritt, Teil } from "../types";
+import type { Frage, Fortschritt, Karteikarte, Teil } from "../types";
 import { fragenOffiziell } from "../data/fragenOffiziell";
+import { karteikarten } from "../data/karteikarten";
 import { fehlerHeuteIds } from "./fortschritt";
+import { istFaellig } from "./srs";
 
 /** Alle aktuell verfügbaren Fragen (später kommen generierte dazu). */
 export function alleFragen(): Frage[] {
@@ -84,4 +86,80 @@ export function fuerPruefung(): PruefungsSatz {
   }
 
   return { fragen, proTeil, vollstaendig };
+}
+
+// ---------------- Karteikarten ----------------
+
+export function alleKarten(): Karteikarte[] {
+  return [...karteikarten];
+}
+
+/** Karten fürs Lernen: heute fällige & neue zuerst, dann der Rest. */
+export function fuerKarten(
+  fortschritt: Fortschritt,
+  kapitel?: number
+): Karteikarte[] {
+  let pool = alleKarten();
+  if (kapitel) pool = pool.filter((k) => k.kapitel === kapitel);
+
+  const faellig: Karteikarte[] = [];
+  const rest: Karteikarte[] = [];
+  for (const k of pool) {
+    if (istFaellig(fortschritt.stand[k.id]?.srs)) faellig.push(k);
+    else rest.push(k);
+  }
+  return [...mische(faellig), ...mische(rest)];
+}
+
+/** Anzahl heute fälliger Karten (inkl. nie gesehener). */
+export function faelligeKarten(fortschritt: Fortschritt): number {
+  return alleKarten().filter((k) => istFaellig(fortschritt.stand[k.id]?.srs)).length;
+}
+
+// ---------------- Kapitel-Fortschritt ----------------
+
+export const KAPITEL_TITEL: Record<number, string> = {
+  1: "Was ist Psychologie",
+  2: "Geschichte",
+  3: "Methoden & Statistik",
+  4: "Biologische Psychologie",
+  5: "Allgemeine Psychologie",
+  6: "Entwicklung",
+  7: "Sozialpsychologie",
+  8: "Persönlichkeit",
+};
+
+export interface KapitelStat {
+  kapitel: number;
+  titel: string;
+  gesamt: number;
+  gemeistert: number;
+  prozent: number;
+}
+
+/** Meisterschaft pro Kapitel über Fragen (Teil A) + Karteikarten. */
+export function kapitelFortschritt(fortschritt: Fortschritt): KapitelStat[] {
+  const items: { id: string; kapitel: number }[] = [
+    ...alleFragen()
+      .filter((f) => f.teil === "A" && f.kapitel)
+      .map((f) => ({ id: f.id, kapitel: f.kapitel as number })),
+    ...alleKarten().map((k) => ({ id: k.id, kapitel: k.kapitel })),
+  ];
+
+  return Object.keys(KAPITEL_TITEL)
+    .map(Number)
+    .map((kapitel) => {
+      const eigene = items.filter((i) => i.kapitel === kapitel);
+      const gemeistert = eigene.filter(
+        (i) => fortschritt.stand[i.id]?.letzteRichtig === true
+      ).length;
+      const gesamt = eigene.length;
+      return {
+        kapitel,
+        titel: KAPITEL_TITEL[kapitel],
+        gesamt,
+        gemeistert,
+        prozent: gesamt ? Math.round((gemeistert / gesamt) * 100) : 0,
+      };
+    });
 }

@@ -15,6 +15,17 @@ export function heute(): string {
   return `${jahr}-${monat}-${tag}`;
 }
 
+// Datum + n Tage, wieder als "yyyy-mm-dd".
+export function plusTage(datum: string, n: number): string {
+  const [y, m, d] = datum.split("-").map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  dt.setUTCDate(dt.getUTCDate() + n);
+  const jahr = dt.getUTCFullYear();
+  const monat = String(dt.getUTCMonth() + 1).padStart(2, "0");
+  const tag = String(dt.getUTCDate()).padStart(2, "0");
+  return `${jahr}-${monat}-${tag}`;
+}
+
 // Differenz in ganzen Tagen zwischen zwei "yyyy-mm-dd"-Strings (b - a).
 export function tageDazwischen(a: string, b: string): number {
   const [ay, am, ad] = a.split("-").map(Number);

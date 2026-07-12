@@ -4,15 +4,18 @@ import type { UebungFilter } from "./lib/auswahl";
 import Home from "./screens/Home";
 import Uebung from "./screens/Uebung";
 import Pruefung from "./screens/Pruefung";
+import Karten from "./screens/Karten";
 
 type View =
   | { name: "home" }
   | { name: "uebung"; filter: UebungFilter }
+  | { name: "karten"; kapitel?: number }
   | { name: "pruefung" };
 
 export default function App() {
-  const { fortschritt, antworten, zuruecksetzen } = useFortschritt();
+  const { fortschritt, antworten, karteBewerten, zuruecksetzen } = useFortschritt();
   const [view, setView] = useState<View>({ name: "home" });
+  const home = () => setView({ name: "home" });
 
   return (
     <div className="min-h-dvh">
@@ -20,23 +23,21 @@ export default function App() {
         <Home
           fortschritt={fortschritt}
           onUebung={(filter) => setView({ name: "uebung", filter })}
+          onKarten={(kapitel) => setView({ name: "karten", kapitel })}
           onPruefung={() => setView({ name: "pruefung" })}
           onReset={zuruecksetzen}
         />
       )}
 
       {view.name === "uebung" && (
-        <Uebung
-          fortschritt={fortschritt}
-          filter={view.filter}
-          onAntwort={antworten}
-          onHome={() => setView({ name: "home" })}
-        />
+        <Uebung fortschritt={fortschritt} filter={view.filter} onAntwort={antworten} onHome={home} />
       )}
 
-      {view.name === "pruefung" && (
-        <Pruefung onAntwort={antworten} onHome={() => setView({ name: "home" })} />
+      {view.name === "karten" && (
+        <Karten fortschritt={fortschritt} kapitel={view.kapitel} onBewerten={karteBewerten} onHome={home} />
       )}
+
+      {view.name === "pruefung" && <Pruefung onAntwort={antworten} onHome={home} />}
     </div>
   );
 }

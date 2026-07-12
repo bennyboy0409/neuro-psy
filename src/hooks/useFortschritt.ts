@@ -4,6 +4,7 @@ import {
   ladeFortschritt,
   speichere,
   mitAntwort,
+  mitQualitaet,
   alleZuruecksetzen,
 } from "../lib/fortschritt";
 
@@ -20,9 +21,18 @@ export function useFortschritt() {
     });
   }, []);
 
+  // Karteikarte mit SM-2-Qualitaet bewerten (1 = nochmal, 4 = gut, 5 = einfach).
+  const karteBewerten = useCallback((id: string, qualitaet: number) => {
+    setFortschritt((f) => {
+      const neu = mitQualitaet(f, id, qualitaet);
+      speichere(neu);
+      return neu;
+    });
+  }, []);
+
   const zuruecksetzen = useCallback(() => {
     setFortschritt(alleZuruecksetzen());
   }, []);
 
-  return { fortschritt, antworten, zuruecksetzen };
+  return { fortschritt, antworten, karteBewerten, zuruecksetzen };
 }

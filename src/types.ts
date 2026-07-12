@@ -42,6 +42,20 @@ export interface Frage {
   beleg?: string;
 }
 
+/**
+ * Karteikarte fuer schnelles Einpraegen (Fakten-Zuordnungen, Definitionen).
+ * vorderseite = Frage/Reiz, rueckseite = Antwort. Unterstuetzt **fett** und ==schluessel==.
+ */
+export interface Karteikarte {
+  id: string;
+  kapitel: number;
+  thema: string;
+  vorderseite: string;
+  rueckseite: string;
+  merksatz?: string;
+  quelle: "offiziell" | "generiert";
+}
+
 // ---------------- Fortschritt (localStorage) ----------------
 
 /** Spaced-Repetition-Zustand pro Frage (SM-2), kommt in Stufe 2 voll zum Einsatz. */

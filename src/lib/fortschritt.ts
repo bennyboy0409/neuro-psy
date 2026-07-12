@@ -1,5 +1,6 @@
 import type { Fortschritt, FrageStand } from "../types";
 import { heute, tageDazwischen } from "./datum";
+import { sm2 } from "./srs";
 
 const KEY = "psy-trainer:v1";
 
@@ -48,35 +49,48 @@ function aktualisiereStreak(
   return { ...streak, letzterTag: tag };
 }
 
-/** Erzeugt einen neuen Fortschritt nach dem Beantworten einer Frage. */
-export function mitAntwort(
+/**
+ * Kern-Update nach einem Ergebnis. Qualitaet q (0-5, SM-2):
+ * richtig gilt ab q >= 3. Aktualisiert Stand, SM-2-Plan, Streak und Fehler-Fokus.
+ */
+export function mitQualitaet(
   f: Fortschritt,
-  frageId: string,
-  richtig: boolean
+  id: string,
+  q: number
 ): Fortschritt {
   const tag = heute();
-  const alt = f.stand[frageId] ?? leererStand();
+  const richtig = q >= 3;
+  const alt = f.stand[id] ?? leererStand();
   const stand: Record<string, FrageStand> = {
     ...f.stand,
-    [frageId]: {
+    [id]: {
       gesehen: alt.gesehen + 1,
       richtig: alt.richtig + (richtig ? 1 : 0),
       falsch: alt.falsch + (richtig ? 0 : 1),
       zuletzt: new Date().toISOString(),
       letzteRichtig: richtig,
-      srs: alt.srs,
+      srs: sm2(alt.srs, q),
     },
   };
 
   const streak = aktualisiereStreak(f.streak, tag);
 
-  // Fehler-Fokus-Modus: was heute falsch war, wird gesammelt.
+  // Fehler-Fokus-Modus: was heute nicht gewusst wurde, wird gesammelt.
   let fehlerHeute = f.fehlerHeute.tag === tag ? f.fehlerHeute : { tag, ids: [] };
-  if (!richtig && !fehlerHeute.ids.includes(frageId)) {
-    fehlerHeute = { tag, ids: [...fehlerHeute.ids, frageId] };
+  if (!richtig && !fehlerHeute.ids.includes(id)) {
+    fehlerHeute = { tag, ids: [...fehlerHeute.ids, id] };
   }
 
   return { ...f, stand, streak, fehlerHeute };
+}
+
+/** Frage beantwortet (alle 4 korrekt?) -> auf SM-2-Qualitaet abgebildet. */
+export function mitAntwort(
+  f: Fortschritt,
+  frageId: string,
+  richtig: boolean
+): Fortschritt {
+  return mitQualitaet(f, frageId, richtig ? 4 : 1);
 }
 
 /** IDs, die HEUTE falsch beantwortet wurden. */
