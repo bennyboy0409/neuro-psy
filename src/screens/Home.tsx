@@ -1,19 +1,21 @@
 import type { Fortschritt } from "../types";
 import type { UebungFilter } from "../lib/auswahl";
 import { alleFragen, alleKarten, faelligeKarten, kapitelFortschritt } from "../lib/auswahl";
+import { fokusFaellig } from "../lib/lernplan";
 import { fehlerHeuteIds } from "../lib/fortschritt";
 import { tageBisTest } from "../lib/datum";
 import Icon from "../components/Icon";
 
 interface Props {
   fortschritt: Fortschritt;
+  onFokus: () => void;
   onUebung: (filter: UebungFilter) => void;
   onKarten: (kapitel?: number) => void;
   onPruefung: () => void;
   onReset: () => void;
 }
 
-export default function Home({ fortschritt, onUebung, onKarten, onPruefung, onReset }: Props) {
+export default function Home({ fortschritt, onFokus, onUebung, onKarten, onPruefung, onReset }: Props) {
   const fragen = alleFragen();
   const karten = alleKarten();
   const gesamtItems = fragen.length + karten.length;
@@ -23,6 +25,7 @@ export default function Home({ fortschritt, onUebung, onKarten, onPruefung, onRe
   const prozent = gesamtItems ? Math.round((gemeistert / gesamtItems) * 100) : 0;
 
   const faellig = faelligeKarten(fortschritt);
+  const fokusN = fokusFaellig(fortschritt);
   const fehler = fehlerHeuteIds(fortschritt).length;
   const tage = tageBisTest();
   const kapitel = kapitelFortschritt(fortschritt);
@@ -68,22 +71,38 @@ export default function Home({ fortschritt, onUebung, onKarten, onPruefung, onRe
       {/* Heute lernen */}
       <h2 className="text-xs uppercase tracking-[0.14em] text-slate-500 mb-2.5 px-1">Heute lernen</h2>
 
+      {/* Fokus – die smarte Tages-Session */}
       <button
-        onClick={() => onKarten()}
-        className="w-full mb-3 rounded-2xl p-4 text-left active:scale-[0.99] transition bg-gradient-to-r from-sky-500/90 to-cyan-500/80 ring-1 ring-white/10 shadow-lg shadow-sky-900/30"
+        onClick={onFokus}
+        className="relative overflow-hidden w-full mb-3 rounded-2xl p-4 text-left active:scale-[0.99] transition bg-gradient-to-r from-emerald-500/90 to-teal-500/85 ring-1 ring-white/10 shadow-lg shadow-emerald-900/30"
       >
-        <div className="flex items-center gap-3">
+        <div className="absolute -right-6 -bottom-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+        <div className="relative flex items-center gap-3">
           <span className="grid place-items-center w-11 h-11 rounded-xl bg-white/15 text-white shrink-0">
-            <Icon name="book" size={22} />
+            <Icon name="sparkles" size={22} />
           </span>
           <div>
-            <p className="font-semibold text-white">Karteikarten</p>
-            <p className="text-sm text-white/75">
-              {faellig > 0 ? `${faellig} Karten heute fällig` : "alle wiederholt — stark!"}
+            <p className="font-semibold text-white">Fokus-Session</p>
+            <p className="text-sm text-white/80">
+              {fokusN > 0 ? `${Math.min(fokusN, 24)} gemischte Einheiten · bis sie sitzen` : "heute alles wiederholt — stark!"}
             </p>
           </div>
-          <span className="ml-auto text-white/80"><Icon name="arrowRight" size={20} /></span>
+          <span className="ml-auto text-white/85"><Icon name="arrowRight" size={20} /></span>
         </div>
+      </button>
+
+      <button
+        onClick={() => onKarten()}
+        className="glass w-full mb-3 rounded-2xl p-3.5 text-left active:scale-[0.98] transition hover:bg-white/[0.07] flex items-center gap-3"
+      >
+        <span className="grid place-items-center w-10 h-10 rounded-xl bg-white/10 text-sky-200 shrink-0">
+          <Icon name="book" size={19} />
+        </span>
+        <div>
+          <p className="font-semibold text-slate-100 text-[15px]">Nur Karteikarten</p>
+          <p className="text-xs text-slate-500">{faellig > 0 ? `${faellig} fällig` : "alle wiederholt"}</p>
+        </div>
+        <span className="ml-auto text-slate-600"><Icon name="chevronRight" size={18} /></span>
       </button>
 
       {fehler > 0 && (
