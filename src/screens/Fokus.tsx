@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from "react";
 import type { Fortschritt } from "../types";
 import type { Antworten } from "../lib/scoring";
 import { bewerteFrage, vollstaendig } from "../lib/scoring";
-import { baueFokus, type LernItem } from "../lib/lernplan";
+import { baueFokus, FOKUS_ZIEL, type LernItem } from "../lib/lernplan";
 import FrageCard from "../components/FrageCard";
 import Flipkarte from "../components/Flipkarte";
 import SuccessBurst from "../components/SuccessBurst";
@@ -13,13 +13,17 @@ interface Props {
   onAntwort: (frageId: string, richtig: boolean) => void;
   onKarte: (id: string, qualitaet: number) => void;
   onHome: () => void;
+  /** Fuer den Kombi-Modus: Anzahl begrenzen und danach weiterschalten. */
+  limit?: number;
+  onComplete?: () => void;
 }
 
 const LEER: Antworten = [null, null, null, null];
 const MAX_VERSUCHE = 3;
 
-export default function Fokus({ fortschritt, onAntwort, onKarte, onHome }: Props) {
-  const plan = useMemo(() => baueFokus(fortschritt), []);
+export default function Fokus({ fortschritt, onAntwort, onKarte, onHome, limit, onComplete }: Props) {
+  const plan = useMemo(() => baueFokus(fortschritt, limit ?? FOKUS_ZIEL), []);
+  const beenden = onComplete ?? onHome;
   const gesamtUnique = plan.items.length;
 
   const [queue, setQueue] = useState<LernItem[]>(plan.items);
@@ -44,7 +48,7 @@ export default function Fokus({ fortschritt, onAntwort, onKarte, onHome }: Props
           </span>
           <p className="text-slate-100 font-medium">Für heute alles wiederholt.</p>
           <p className="text-sm text-slate-500 mt-1">Komm morgen wieder — der Algorithmus plant den Rest.</p>
-          <button onClick={onHome} className="mt-5 rounded-xl bg-white/10 px-5 py-2.5 text-slate-100 font-medium active:scale-95 transition">Zurück</button>
+          <button onClick={beenden} className="mt-5 rounded-xl bg-white/10 px-5 py-2.5 text-slate-100 font-medium active:scale-95 transition">{onComplete ? "Weiter" : "Zurück"}</button>
         </div>
       </Rahmen>
     );
@@ -69,7 +73,7 @@ export default function Fokus({ fortschritt, onAntwort, onKarte, onHome }: Props
           <p className="text-xs text-slate-600 mt-2 leading-relaxed">
             Jede Einheit wurde so lange wiederholt, bis du sie heute konntest. Genau das lässt es hängen bleiben.
           </p>
-          <button onClick={onHome} className="mt-5 w-full rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-3.5 text-white font-semibold active:scale-[0.98] transition">Fertig</button>
+          <button onClick={beenden} className="mt-5 w-full rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-500 px-4 py-3.5 text-white font-semibold active:scale-[0.98] transition">{onComplete ? "Weiter" : "Fertig"}</button>
         </div>
       </Rahmen>
     );

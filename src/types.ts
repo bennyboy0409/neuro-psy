@@ -83,4 +83,6 @@ export interface Fortschritt {
   streak: { count: number; letzterTag: string | null };
   /** IDs, die heute falsch waren (Fehler-Fokus-Modus). */
   fehlerHeute: { tag: string | null; ids: string[] };
+  /** Bester Blitz-Punktestand. */
+  blitzRekord?: number;
 }

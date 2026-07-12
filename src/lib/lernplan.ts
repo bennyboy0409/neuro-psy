@@ -101,3 +101,23 @@ export function baueFokus(f: Fortschritt, ziel = FOKUS_ZIEL): FokusPlan {
 export function fokusFaellig(f: Fortschritt): number {
   return alleLernItems().filter((it) => prioritaet(f, it.id) <= 3).length;
 }
+
+// ---------------- Blitz ----------------
+
+export interface BlitzItem {
+  frageId: string;
+  kontext: string;
+  text: string;
+  istRichtig: boolean;
+}
+
+/** Alle Aussagen einzeln als Richtig/Falsch-Happen, gemischt (fuer den Blitz-Modus). */
+export function blitzStrom(): BlitzItem[] {
+  const items: BlitzItem[] = [];
+  for (const f of alleFragen()) {
+    for (const a of f.aussagen) {
+      items.push({ frageId: f.id, kontext: f.stem, text: a.text, istRichtig: a.istRichtig });
+    }
+  }
+  return mische(items);
+}

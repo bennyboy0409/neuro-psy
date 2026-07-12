@@ -6,16 +6,22 @@ import Uebung from "./screens/Uebung";
 import Pruefung from "./screens/Pruefung";
 import Karten from "./screens/Karten";
 import Fokus from "./screens/Fokus";
+import Blitz from "./screens/Blitz";
+import BrainDump from "./screens/BrainDump";
+import Kombi from "./screens/Kombi";
 
 type View =
   | { name: "home" }
   | { name: "fokus" }
+  | { name: "blitz" }
+  | { name: "braindump"; kapitel?: number }
+  | { name: "kombi" }
   | { name: "uebung"; filter: UebungFilter }
   | { name: "karten"; kapitel?: number }
   | { name: "pruefung" };
 
 export default function App() {
-  const { fortschritt, antworten, karteBewerten, zuruecksetzen } = useFortschritt();
+  const { fortschritt, antworten, karteBewerten, blitzFertig, zuruecksetzen } = useFortschritt();
   const [view, setView] = useState<View>({ name: "home" });
   const home = () => setView({ name: "home" });
 
@@ -25,6 +31,9 @@ export default function App() {
         <Home
           fortschritt={fortschritt}
           onFokus={() => setView({ name: "fokus" })}
+          onBlitz={() => setView({ name: "blitz" })}
+          onBrainDump={() => setView({ name: "braindump" })}
+          onKombi={() => setView({ name: "kombi" })}
           onUebung={(filter) => setView({ name: "uebung", filter })}
           onKarten={(kapitel) => setView({ name: "karten", kapitel })}
           onPruefung={() => setView({ name: "pruefung" })}
@@ -34,6 +43,18 @@ export default function App() {
 
       {view.name === "fokus" && (
         <Fokus fortschritt={fortschritt} onAntwort={antworten} onKarte={karteBewerten} onHome={home} />
+      )}
+
+      {view.name === "blitz" && (
+        <Blitz best={fortschritt.blitzRekord ?? 0} onFertig={blitzFertig} onHome={home} />
+      )}
+
+      {view.name === "braindump" && (
+        <BrainDump kapitel={view.kapitel} onBewerten={karteBewerten} onHome={home} />
+      )}
+
+      {view.name === "kombi" && (
+        <Kombi fortschritt={fortschritt} onAntwort={antworten} onKarte={karteBewerten} onBlitzFertig={blitzFertig} onHome={home} />
       )}
 
       {view.name === "uebung" && (

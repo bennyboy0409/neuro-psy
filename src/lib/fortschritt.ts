@@ -93,6 +93,15 @@ export function mitAntwort(
   return mitQualitaet(f, frageId, richtig ? 4 : 1);
 }
 
+/** Blitz-Ergebnis: zaehlt als Lern-Aktivitaet (Streak) und aktualisiert den Rekord. */
+export function mitBlitz(f: Fortschritt, punkte: number): Fortschritt {
+  return {
+    ...f,
+    streak: aktualisiereStreak(f.streak, heute()),
+    blitzRekord: Math.max(f.blitzRekord ?? 0, punkte),
+  };
+}
+
 /** IDs, die HEUTE falsch beantwortet wurden. */
 export function fehlerHeuteIds(f: Fortschritt): string[] {
   return f.fehlerHeute.tag === heute() ? f.fehlerHeute.ids : [];

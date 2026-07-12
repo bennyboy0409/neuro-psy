@@ -16,7 +16,10 @@ type IconName =
   | "bulb"
   | "brain"
   | "sparkles"
-  | "rotate";
+  | "rotate"
+  | "bolt"
+  | "pen"
+  | "layers";
 
 interface Props {
   name: IconName;
@@ -119,6 +122,19 @@ const PATHS: Record<IconName, React.ReactNode> = {
     <>
       <path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-6.4 2.6L3 8" />
       <path d="M3 3v5h5" />
+    </>
+  ),
+  bolt: <path d="M13 2 4.09 12.9a1 1 0 0 0 .77 1.63H11l-1 7.87 8.91-10.9a1 1 0 0 0-.77-1.63H12z" />,
+  pen: (
+    <>
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+    </>
+  ),
+  layers: (
+    <>
+      <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84Z" />
+      <path d="m6.08 9.5-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83l-3.5-1.59" />
     </>
   ),
 };

@@ -5,6 +5,7 @@ import {
   speichere,
   mitAntwort,
   mitQualitaet,
+  mitBlitz,
   alleZuruecksetzen,
 } from "../lib/fortschritt";
 
@@ -30,9 +31,17 @@ export function useFortschritt() {
     });
   }, []);
 
+  const blitzFertig = useCallback((punkte: number) => {
+    setFortschritt((f) => {
+      const neu = mitBlitz(f, punkte);
+      speichere(neu);
+      return neu;
+    });
+  }, []);
+
   const zuruecksetzen = useCallback(() => {
     setFortschritt(alleZuruecksetzen());
   }, []);
 
-  return { fortschritt, antworten, karteBewerten, zuruecksetzen };
+  return { fortschritt, antworten, karteBewerten, blitzFertig, zuruecksetzen };
 }
