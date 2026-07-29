@@ -9,8 +9,11 @@ dist-ssr
 # Das Lernskript und die Beispielitems duerfen nur zur eigenen Pruefungsvorbereitung
 # genutzt, aber nicht weiterverbreitet werden (Rechte: Fachbereich Psychologie,
 # Paris Lodron Universitaet Salzburg). Lokal bleiben die Dateien natuerlich liegen.
-data/
-!data/.gitkeep
+#
+# WICHTIG: fuehrender Slash! Ohne ihn wuerde das Muster auch src/data/ treffen
+# und alle Fragen-Dateien aus dem Repo werfen (ist genau einmal passiert).
+/data/
+!/data/.gitkeep
 
 # editor / os
 .DS_Store
