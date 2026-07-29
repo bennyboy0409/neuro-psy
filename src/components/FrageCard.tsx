@@ -3,6 +3,7 @@ import type { Frage } from "../types";
 import type { Antworten } from "../lib/scoring";
 import { lesetextZu } from "../lib/auswahl";
 import RichText from "./RichText";
+import Diagramm from "./Diagramm";
 import Icon from "./Icon";
 
 interface Props {
@@ -113,6 +114,18 @@ export default function FrageCard({
         </pre>
       )}
 
+      {frage.angabeHinweis && (
+        <p className="mt-3 rounded-xl bg-white/[0.03] ring-1 ring-white/10 px-3 py-2 text-xs text-slate-400 leading-relaxed">
+          {frage.angabeHinweis}
+        </p>
+      )}
+
+      {frage.grafik && (
+        <div className="mt-3 rounded-xl bg-black/25 ring-1 ring-white/10 p-2.5">
+          <Diagramm grafik={frage.grafik} />
+        </div>
+      )}
+
       {frage.tabelle && (
         <div className="mt-3 overflow-x-auto">
           <table className="text-sm border-collapse w-full">
@@ -180,6 +193,13 @@ export default function FrageCard({
                   </span>
                 )}
               </div>
+
+              {/* Grafik zur Antwortoption (Teil B: Diagrammauswahl) */}
+              {aussage.grafik && (
+                <div className="mt-2 ml-9 rounded-lg bg-black/25 ring-1 ring-white/10 p-2">
+                  <Diagramm grafik={aussage.grafik} klein />
+                </div>
+              )}
 
               <div className="mt-2.5 pl-9">
                 <div className="inline-flex rounded-xl bg-black/25 p-0.5 ring-1 ring-white/10">

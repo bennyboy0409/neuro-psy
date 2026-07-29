@@ -4,10 +4,44 @@
 
 export type Teil = "A" | "B" | "C";
 
+/**
+ * Diagramm fuer Teil-B-Aufgaben (Diagrammauswertung).
+ * Wird als SVG gerendert — bewusst schlicht, wie im echten Test.
+ */
+export type Grafik =
+  | {
+      art: "linien";
+      /** Beschriftung der beiden x-Positionen, z. B. ["20 Jahre", "80 Jahre"]. */
+      xLabels: [string, string];
+      yMax: number;
+      yLabel?: string;
+      xLabel?: string;
+      serien: { name: string; stil: "voll" | "gestrichelt"; werte: [number, number] }[];
+    }
+  | {
+      art: "balken";
+      titel: string;
+      /** Zeilenbeschriftungen von oben nach unten. */
+      kategorien: string[];
+      /** Werte koennen negativ sein (Differenz-Diagramme). */
+      werte: number[];
+      min: number;
+      max: number;
+    }
+  | {
+      art: "kurven";
+      xLabel?: string;
+      yLabel?: string;
+      /** Logistische Kurven: Wendepunkt auf der x-Achse (-8..9). */
+      kurven: { name: string; wendepunkt: number; stil: "voll" | "punkte" | "gestrichelt" | "strichpunkt" }[];
+    };
+
 /** Eine einzelne Aussage innerhalb einer Frage. */
 export interface Aussage {
   text: string;
   istRichtig: boolean;
+  /** Optionale Grafik zur Antwortoption (Diagrammauswahl in Teil B). */
+  grafik?: Grafik;
 }
 
 /**
@@ -30,6 +64,10 @@ export interface Frage {
   stemZusatz?: string;
   /** Optionale Tabelle (z. B. Teil B Skalenniveau). */
   tabelle?: { kopf: string[]; zeilen: string[][] };
+  /** Optionale Grafik zur Angabe (Teil B: Diagramm auswerten). */
+  grafik?: Grafik;
+  /** Optionale Bildbeschreibung, wenn die Angabe eine Abbildung enthaelt. */
+  angabeHinweis?: string;
   /** GENAU 4 Aussagen. */
   aussagen: [Aussage, Aussage, Aussage, Aussage];
   /** Erklaerung, wird nach dem Pruefen gezeigt. Unterstuetzt **fett** und ==schluessel==. */

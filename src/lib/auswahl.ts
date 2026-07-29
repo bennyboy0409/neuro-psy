@@ -8,6 +8,7 @@ import { lueckenK7 } from "../data/lueckenK7";
 import { lueckenK8 } from "../data/lueckenK8";
 import { lueckenK123 } from "../data/lueckenK123";
 import { teilB } from "../data/teilB";
+import { teilBDiagramme } from "../data/teilBDiagramme";
 import { fragenTeilC, lesetexte } from "../data/teilC";
 import { karteikarten } from "../data/karteikarten";
 import { fehlerHeuteIds } from "./fortschritt";
@@ -25,6 +26,7 @@ export function alleFragen(): Frage[] {
     ...lueckenK7,
     ...lueckenK8,
     ...teilB,
+    ...teilBDiagramme,
     ...fragenTeilC,
   ];
 }
