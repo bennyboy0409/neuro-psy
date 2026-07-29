@@ -7,6 +7,9 @@ import { lueckenK6 } from "../data/lueckenK6";
 import { lueckenK7 } from "../data/lueckenK7";
 import { lueckenK8 } from "../data/lueckenK8";
 import { lueckenK123 } from "../data/lueckenK123";
+import { nachzuegler45 } from "../data/nachzuegler45";
+import { nachzuegler67 } from "../data/nachzuegler67";
+import { nachzuegler138 } from "../data/nachzuegler138";
 import { teilB } from "../data/teilB";
 import { teilBDiagramme } from "../data/teilBDiagramme";
 import { fragenTeilC, lesetexte } from "../data/teilC";
@@ -25,6 +28,9 @@ export function alleFragen(): Frage[] {
     ...lueckenK6,
     ...lueckenK7,
     ...lueckenK8,
+    ...nachzuegler45,
+    ...nachzuegler67,
+    ...nachzuegler138,
     ...teilB,
     ...teilBDiagramme,
     ...fragenTeilC,
