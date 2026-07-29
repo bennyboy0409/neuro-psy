@@ -40,6 +40,20 @@ export interface Frage {
   quelle: "offiziell" | "generiert";
   /** Bei generierten Fragen: Skript-Belegstelle (Kapitel/Seite). */
   beleg?: string;
+  /** Nur Teil C: ID des englischen Lesetexts, auf den sich die Frage bezieht. */
+  textId?: string;
+}
+
+/** Englischer Fachtext fuer Pruefungsteil C (Textleseverstaendnis). */
+export interface Lesetext {
+  id: string;
+  titel: string;
+  /** Quellenangabe im APA-Stil bzw. Herkunftshinweis. */
+  quelle: string;
+  /** Absaetze des englischen Texts. */
+  absaetze: string[];
+  /** Vokabelhilfen: englischer Begriff -> deutsche Erklaerung. */
+  glossar?: { begriff: string; erklaerung: string }[];
 }
 
 /**

@@ -222,8 +222,9 @@ export const fragenGeneriert: Frage[] = [
     merksatz: "==sensorisch (ms) → KZG (7±2) → LZG==; prozedural = implizit, episodisch = Erlebtes.",
   },
   {
-    id: "G5-4", teil: "A", kapitel: 5, thema: "Wahrnehmung", quelle: "generiert", schwierigkeit: 2,
-    stem: "Welche Aussagen zur ==Wahrnehmung== (Gestaltpsychologie) sind korrekt?",
+    id: "G5-4", teil: "A", kapitel: 2, thema: "Gestaltpsychologie", quelle: "generiert", schwierigkeit: 2,
+    beleg: "Kap. 2.4.2 (Gestaltpsychologie), S. 41",
+    stem: "Welche Aussagen zu den ==Gestaltgesetzen== sind korrekt?",
     aussagen: [
       { text: "Nach dem Gesetz der Nähe werden nahe beieinanderliegende Elemente als zusammengehörig gesehen.", istRichtig: true },
       { text: "Das Gesetz der Ähnlichkeit gruppiert ähnliche Elemente.", istRichtig: true },

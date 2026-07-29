@@ -1,9 +1,10 @@
+import { useState } from "react";
 import type { Fortschritt } from "../types";
 import type { UebungFilter } from "../lib/auswahl";
 import { alleFragen, alleKarten, kapitelFortschritt } from "../lib/auswahl";
 import { fokusFaellig } from "../lib/lernplan";
 import { fehlerHeuteIds } from "../lib/fortschritt";
-import { tageBisTest } from "../lib/datum";
+import { tageBisTest, testDatum, setzeTestDatum, TEST_DATUM_STANDARD } from "../lib/datum";
 import Icon from "../components/Icon";
 
 interface Props {
@@ -28,8 +29,12 @@ export default function Home({ fortschritt, onFokus, onBlitz, onBrainDump, onKom
   const prozent = gesamtItems ? Math.round((gemeistert / gesamtItems) * 100) : 0;
   const fokusN = fokusFaellig(fortschritt);
   const fehler = fehlerHeuteIds(fortschritt).length;
-  const tage = tageBisTest();
   const kapitel = kapitelFortschritt(fortschritt);
+
+  const [termin, setTermin] = useState<string>(() => testDatum());
+  const [terminOffen, setTerminOffen] = useState(false);
+  // haengt an `termin`, damit der Countdown nach dem Aendern sofort stimmt
+  const tage = (() => { void termin; return tageBisTest(); })();
 
   return (
     <div className="mx-auto max-w-md px-4 pb-12">
@@ -54,8 +59,33 @@ export default function Home({ fortschritt, onFokus, onBlitz, onBrainDump, onKom
               <span className="text-slate-300 mb-1">{tage === 0 ? "— heute ist Test!" : tage === 1 ? "Tag bis zum Test" : "Tage bis zum Test"}</span>
             </div>
           ) : (
-            <p className="text-white font-semibold">Test-Termin vorbei — viel Erfolg gehabt!</p>
+            <p className="text-white font-semibold">Termin liegt in der Vergangenheit — bitte anpassen.</p>
           )}
+
+          <button
+            onClick={() => setTerminOffen((o) => !o)}
+            className="mt-1.5 text-xs text-slate-500 hover:text-slate-300 transition inline-flex items-center gap-1"
+          >
+            {new Date(termin).toLocaleDateString("de-AT", { day: "2-digit", month: "long", year: "numeric" })} · Termin ändern
+          </button>
+
+          {terminOffen && (
+            <div className="mt-2 flex items-center gap-2 animate-fade-up">
+              <input
+                type="date"
+                value={termin}
+                onChange={(e) => { setTermin(e.target.value); setzeTestDatum(e.target.value); }}
+                className="rounded-lg bg-black/30 ring-1 ring-white/15 px-2.5 py-1.5 text-sm text-slate-100 outline-none focus:ring-sky-400/50"
+              />
+              <button
+                onClick={() => { setzeTestDatum(""); setTermin(TEST_DATUM_STANDARD); }}
+                className="text-xs text-slate-500 hover:text-slate-300"
+              >
+                zurücksetzen
+              </button>
+            </div>
+          )}
+
           <div className="mt-4">
             <div className="flex justify-between text-xs text-slate-400 mb-1.5">
               <span>Gemeistert</span>
@@ -123,9 +153,10 @@ export default function Home({ fortschritt, onFokus, onBlitz, onBrainDump, onKom
         </div>
         <span className="ml-auto text-slate-600"><Icon name="chevronRight" size={20} /></span>
       </button>
-      <div className="grid grid-cols-2 gap-3 mt-3">
+      <div className="grid grid-cols-3 gap-2.5 mt-3">
         <Kachel icon="brain" farbe="from-white/10 to-white/10 text-slate-200" titel="Teil A" unterzeile={`${fragen.filter((f) => f.teil === "A").length} · Skript`} onClick={() => onUebung({ teil: "A" })} />
         <Kachel icon="chart" farbe="from-white/10 to-white/10 text-slate-200" titel="Teil B" unterzeile={`${fragen.filter((f) => f.teil === "B").length} · Methodik`} onClick={() => onUebung({ teil: "B" })} />
+        <Kachel icon="book" farbe="from-white/10 to-white/10 text-slate-200" titel="Teil C" unterzeile={`${fragen.filter((f) => f.teil === "C").length} · Englisch`} onClick={() => onUebung({ teil: "C" })} />
       </div>
 
       {/* Kapitel */}

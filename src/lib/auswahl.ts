@@ -1,13 +1,38 @@
-import type { Frage, Fortschritt, Karteikarte, Teil } from "../types";
+import type { Frage, Fortschritt, Karteikarte, Lesetext, Teil } from "../types";
 import { fragenOffiziell } from "../data/fragenOffiziell";
 import { fragenGeneriert } from "../data/fragenGeneriert";
+import { lueckenK4 } from "../data/lueckenK4";
+import { lueckenK5 } from "../data/lueckenK5";
+import { lueckenK6 } from "../data/lueckenK6";
+import { lueckenK7 } from "../data/lueckenK7";
+import { lueckenK8 } from "../data/lueckenK8";
+import { lueckenK123 } from "../data/lueckenK123";
+import { teilB } from "../data/teilB";
+import { fragenTeilC, lesetexte } from "../data/teilC";
 import { karteikarten } from "../data/karteikarten";
 import { fehlerHeuteIds } from "./fortschritt";
 import { istFaellig } from "./srs";
 
-/** Alle aktuell verfügbaren Fragen (offiziell + generiert). */
+/** Alle aktuell verfügbaren Fragen (offiziell + generiert, alle Teile). */
 export function alleFragen(): Frage[] {
-  return [...fragenOffiziell, ...fragenGeneriert];
+  return [
+    ...fragenOffiziell,
+    ...fragenGeneriert,
+    ...lueckenK123,
+    ...lueckenK4,
+    ...lueckenK5,
+    ...lueckenK6,
+    ...lueckenK7,
+    ...lueckenK8,
+    ...teilB,
+    ...fragenTeilC,
+  ];
+}
+
+/** Englischer Lesetext zu einer Teil-C-Frage (falls vorhanden). */
+export function lesetextZu(frage: Frage): Lesetext | undefined {
+  if (!frage.textId) return undefined;
+  return lesetexte.find((t) => t.id === frage.textId);
 }
 
 function mische<T>(arr: T[]): T[] {

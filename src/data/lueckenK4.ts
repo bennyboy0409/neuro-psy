@@ -1,0 +1,218 @@
+import type { Frage } from "../types";
+
+// ============================================================
+//  Kapitel 4 — Biologische Psychologie: Lücken-Fragen
+//  Quelle: offizielles Lernskript, Kap. 4.1.3, 4.3.1–4.3.3, 4.4.2–4.4.3
+//  (S. 91–92, 106–113, 117–121). Format: 4 Aussagen, min. 1 richtig.
+// ============================================================
+
+export const lueckenK4: Frage[] = [
+  {
+    id: "L4-1", teil: "A", kapitel: 4, thema: "Hirnforschung", quelle: "generiert", schwierigkeit: 1,
+    stem: "Welche Aussagen zum Fall ==Phineas Gage== sind korrekt?",
+    aussagen: [
+      { text: "Der Unfall ereignete sich 1848; Gage wurde vom Arzt John Harlow untersucht.", istRichtig: true },
+      { text: "Die Eisenstange durchfuhr seinen linken vorderen Frontallappen.", istRichtig: true },
+      { text: "Gage konnte nach dem Unfall nicht mehr sprechen.", istRichtig: false },
+      { text: "Gedächtnis und Intelligenz waren nach dem Unfall dauerhaft schwer beeinträchtigt.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Der Unfall geschah ==1848==, untersucht wurde Gage von ==John Harlow==. b) Richtig: Die Stange trat unterhalb des linken Wangenknochens ein und durchfuhr den ==linken vorderen Frontallappen==. c) Falsch: Gage redete bereits ==wenige Minuten== nach dem Unfall wieder — Sprache, Haltung und Bewegung waren intakt. d) Falsch: Seine kognitiven Fähigkeiten (==Wahrnehmung, Gedächtnis, Intelligenz==) waren völlig intakt — verändert hat sich sein ==Verhalten== (rücksichtslos, impulsiv, obszön, unzuverlässig).",
+    merksatz: "Gage: ==Kopf durchbohrt, Kopf intakt — aber Charakter weg== (==Frontallappen== = Handlungsplanung + Impulskontrolle).",
+    beleg: "Kap. 4.1.3, S. 91–92",
+  },
+  {
+    id: "L4-2", teil: "A", kapitel: 4, thema: "Hirnforschung", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zum Patienten ==Tan== und zu ==Paul Broca== sind korrekt?",
+    aussagen: [
+      { text: "Der Patient hatte ein stark eingeschränktes Sprechvermögen und konnte nur noch 'tan' sagen.", istRichtig: true },
+      { text: "Broca fand die Auffälligkeit in einem Bereich der linken Gehirnhälfte.", istRichtig: true },
+      { text: "Bei der Broca-Aphasie geht die Sprachproduktion teilweise verloren, das Sprachverständnis bleibt weitgehend erhalten.", istRichtig: true },
+      { text: "Der Patient konnte Gesprochenes nicht mehr verstehen.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Daher der Name ==Tan==. b) Richtig: Nach dem Tod des Patienten untersuchte Broca dessen Gehirn und fand eine Auffälligkeit in der ==linken Hemisphäre==; das ist heute das ==Broca-Areal==. c) Richtig: Genau das kennzeichnet die ==Broca-Aphasie==. d) Falsch: Der Patient war sehr wohl in der Lage, ==Gesprochenes zu verstehen==. Broca lieferte damit den ersten wissenschaftlichen Hinweis, dass Gehirnregionen ==spezialisierte Funktionen== ausführen.",
+    merksatz: "Broca: ==Mund kaputt, Ohr heil== — Sprachproduktion gestört, Verständnis erhalten.",
+    beleg: "Kap. 4.1.3, S. 92",
+  },
+  {
+    id: "L4-3", teil: "A", kapitel: 4, thema: "Anatomie", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zu den anatomischen Bezeichnungen ==dorsal, ventral, anterior, posterior== sind korrekt?",
+    aussagen: [
+      { text: "Dorsal bedeutet beim Gehirn: in Richtung Kopfoberseite.", istRichtig: true },
+      { text: "Mit anterior werden Strukturen bezeichnet, die vorne liegen bzw. nach vorne verlaufen.", istRichtig: true },
+      { text: "Ventral bedeutet beim Rumpf: in Richtung Rücken.", istRichtig: false },
+      { text: "Posterior bedeutet beim Gehirn: in Richtung Nase.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: ==dorsal== = oben; beim Gehirn Richtung ==Kopfoberseite==, beim Rumpf Richtung ==Rücken==. b) Richtig: ==anterior== = vorne, ==posterior== = hinten. c) Falsch: ==ventral== = unten; beim Rumpf zeigt es Richtung ==Brustkorb==, nicht Richtung Rücken. d) Falsch: ==posterior== zeigt beim Gehirn Richtung ==Hinterhaupt==; Richtung Nase wäre ==anterior==.",
+    merksatz: "==Dorsal== wie Delfin-Rückenflosse (oben/Rücken), ==ventral== wie Bauch (unten/Brustkorb).",
+    beleg: "Kap. 4.3.1, S. 106–107",
+  },
+  {
+    id: "L4-4", teil: "A", kapitel: 4, thema: "Anatomie", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zu ==medial, lateral, superior, inferior, ipsi-/kontralateral== sind korrekt?",
+    aussagen: [
+      { text: "Medial liegende Strukturen befinden sich nahe der Mittellinie des Körpers — die Nase liegt medial zu den Augen.", istRichtig: true },
+      { text: "Lateral bedeutet seitlich, also relativ weit von der Mittellinie entfernt.", istRichtig: true },
+      { text: "Kontralateral heißt 'auf der gegenüberliegenden Körperseite', ipsilateral 'auf der gleichen Körperseite'.", istRichtig: true },
+      { text: "Superior bezeichnet etwas, das sich in Richtung der Füße und Zehen befindet.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: ==medial== = mittig, in Richtung der Körpermittellinie; das Skript nennt genau dieses Beispiel. b) Richtig: ==lateral== = außen, weg von der Mittellinie. c) Richtig: Genau so sind die beiden Begriffe definiert — die Nerven der ==Sehbahn== sind z. B. ==kontralateral== verschaltet. d) Falsch: ==superior== zeigt Richtung ==Kopf==, Richtung Füße und Zehen wäre ==inferior==.",
+    merksatz: "==Medial== = Mitte, ==lateral== = Latz an der Seite; ==superior== = super weit oben, ==inferior== = unten.",
+    beleg: "Kap. 4.3.1, S. 106–108",
+  },
+  {
+    id: "L4-5", teil: "A", kapitel: 4, thema: "Rückenmark", quelle: "generiert", schwierigkeit: 1,
+    stem: "Welche Aussagen zum ==Rückenmark== und zu den ==Spinalnerven== sind korrekt?",
+    aussagen: [
+      { text: "Das Rückenmark ist beim Menschen etwa 40–45 cm lang und liegt im Kanal der Wirbelsäule.", istRichtig: true },
+      { text: "Jedem Spinalnerv ist an der Körperoberfläche ein bestimmtes Gebiet zugeordnet, das Dermatom.", istRichtig: true },
+      { text: "Das Rückenmark gehört zum peripheren Nervensystem.", istRichtig: false },
+      { text: "Bei Schädigung eines Spinalnervs fällt die Sensibilität des zugehörigen Dermatoms vollständig aus.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Annähernd zylindrisch, ==40–45 cm==, von ==Rückenmarksflüssigkeit== umgeben. b) Richtig: Das ist die Definition des ==Dermatoms==. c) Falsch: Gehirn und Rückenmark bilden gemeinsam das ==zentrale Nervensystem (ZNS)==. d) Falsch: Jeder Spinalnerv versorgt auch Teile der ==beiden benachbarten Dermatome== mit — deshalb kommt es zu ==keinem völligen Ausfall==.",
+    merksatz: "Ein Dermatom hat immer ==drei Versorger== — darum reißt bei einem Ausfall kein Loch in die Haut-Sensibilität.",
+    beleg: "Kap. 4.3.2, S. 108",
+  },
+  {
+    id: "L4-6", teil: "A", kapitel: 4, thema: "Rückenmark", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zum ==Querschnitt des Rückenmarks== sind korrekt?",
+    aussagen: [
+      { text: "Die graue Substanz bildet im Inneren eine H-förmige Gestalt, außen liegt die weiße Substanz.", istRichtig: true },
+      { text: "Im Hinterstrang verlaufen die aufsteigenden, im Vorderstrang die absteigenden Nervenbahnen.", istRichtig: true },
+      { text: "Über die Hinterwurzel dringen die sensorischen Nervenfasern in das Rückenmark ein.", istRichtig: true },
+      { text: "Die Hinterhörner enthalten überwiegend motorische, die Vorderhörner überwiegend sensorische Zellgruppen.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Innerer Kern ==graue Substanz== (H-förmig), umgebend ==weiße Substanz==. b) Richtig: ==Hinterstrang== = aufsteigend (Peripherie → Gehirn), ==Vorderstrang== = absteigend (Gehirn → Peripherie); im ==Seitenstrang== liegt u. a. die ==Pyramidenbahn==. c) Richtig: Dort treten die sensorischen Fasern ein, über die ==Vorderwurzel== treten die motorischen aus. d) Falsch: Genau umgekehrt — ==Hinterhörner sensorisch==, ==Vorderhörner motorisch==.",
+    merksatz: "==Hinten rein = sensorisch, vorne raus = motorisch== — für Hörner, Wurzeln und Stränge gleichermaßen.",
+    beleg: "Kap. 4.3.2, S. 108–109",
+  },
+  {
+    id: "L4-7", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zur ==embryonalen Entwicklung des Gehirns== (primäre Hirnbläschen) sind korrekt?",
+    aussagen: [
+      { text: "Aus dem Neuralrohr, einem flüssigkeitsgefüllten Rohr, entsteht in der Folge das Nervensystem.", istRichtig: true },
+      { text: "Die drei primären Hirnbläschen sind Prosencephalon, Mesencephalon und Rhombencephalon.", istRichtig: true },
+      { text: "Aus dem Vorderhirnbläschen entwickeln sich Telencephalon (Großhirn) und Diencephalon (Zwischenhirn).", istRichtig: true },
+      { text: "Auch das Mesencephalon differenziert sich in der weiteren Entwicklung noch in zwei Bläschen.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Das ==Neuralrohr== bildet sich in der frühen embryonalen Entwicklung der Wirbeltiere. b) Richtig: ==Prosencephalon== (Vorderhirn), ==Mesencephalon== (Mittelhirn), ==Rhombencephalon== (Rautenhirn). c) Richtig: Vorderhirn → ==Telencephalon + Diencephalon==. d) Falsch: Nur das ==Vorderhirn-== und das ==Rautenhirnbläschen== teilen sich weiter (Rautenhirn → ==Metencephalon + Myelencephalon==); das Mittelhirn bleibt ein Bläschen.",
+    merksatz: "==3 werden 5==: Vorderhirn und Rautenhirn teilen sich, das ==Mittelhirn bleibt allein==.",
+    beleg: "Kap. 4.3.3, S. 110",
+  },
+  {
+    id: "L4-8", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zu ==Medulla oblongata, Pons und Cerebellum== sind korrekt?",
+    aussagen: [
+      { text: "Die Medulla oblongata (Nachhirn) verbindet das Gehirn mit dem Rückenmark und ist das Zentrum für Atmung, Blutdruck und Herzschlag.", istRichtig: true },
+      { text: "In der Medulla oblongata kreuzen sich afferente und efferente Nervenfasern, sodass die linke Körperseite mit der rechten Gehirnhälfte verbunden ist.", istRichtig: true },
+      { text: "Das Metencephalon (Hinterhirn) lässt sich in Cerebellum (Kleinhirn) und Pons (Brücke) unterteilen.", istRichtig: true },
+      { text: "Der Pons liegt direkt unterhalb der Medulla oblongata.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Diese Prozesse sind lebenswichtig — eine Schädigung der ==Medulla oblongata== ist häufig ==tödlich==. b) Richtig: ==afferent== = zum Gehirn aufsteigend, ==efferent== = absteigend; die Kreuzung erzeugt die ==kontralaterale== Verschaltung von Körper und Gehirn. c) Richtig: ==Metencephalon== = ==Cerebellum + Pons==. d) Falsch: Der Pons liegt direkt ==über== der Medulla oblongata, das Cerebellum ==hinter== dem Pons.",
+    merksatz: "Von unten nach oben: ==Medulla → Pons → Mittelhirn==, das ==Kleinhirn== sitzt hinten dran und macht die ==Motorik glatt==.",
+    beleg: "Kap. 4.3.3, S. 111",
+  },
+  {
+    id: "L4-9", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zum ==Mesencephalon (Mittelhirn)== sind korrekt?",
+    aussagen: [
+      { text: "Das Mesencephalon bildet zusammen mit dem Pons und der Medulla oblongata den Hirnstamm.", istRichtig: true },
+      { text: "Das Tectum liegt ventral, das Tegmentum dorsal.", istRichtig: false },
+      { text: "Das periaquäduktale Grau ist vor allem für das Gleichgewicht zuständig.", istRichtig: false },
+      { text: "Die Substantia nigra ist eine Struktur serotoninproduzierender Neuronen.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Der ==Hirnstamm== besteht aus ==Mesencephalon, Pons und Medulla oblongata==; das Mittelhirn liegt über dem Pons. b) Falsch: Genau umgekehrt — ==Tectum dorsal==, ==Tegmentum ventral==. Im Tectum liegen Strukturen für das ==visuelle und auditorische== System (z. B. Reflexbewegungen von Augen und Kopf). c) Falsch: Das ==periaquäduktale Grau== spielt eine wichtige Rolle bei der ==Schmerzwahrnehmung==. d) Falsch: Die ==Substantia nigra== besteht aus ==dopaminproduzierenden== Neuronen und ist für die ==Bewegungssteuerung== wichtig.",
+    merksatz: "==Tectum = Dach (dorsal, Sehen/Hören)==, ==Tegmentum = darunter (ventral, Schmerz + Dopamin)==.",
+    beleg: "Kap. 4.3.3, S. 111",
+  },
+  {
+    id: "L4-10", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zum ==Diencephalon (Zwischenhirn)== sind korrekt?",
+    aussagen: [
+      { text: "Im Thalamus laufen die Informationen der Sinnesorgane mit Ausnahme des Geruchssinns zusammen.", istRichtig: true },
+      { text: "Der Hypothalamus steuert die Freisetzung von Hormonen aus der Hypophyse (Hirnanhangdrüse).", istRichtig: true },
+      { text: "Der Hypothalamus ist das wichtigste Steuerzentrum des autonomen Nervensystems.", istRichtig: true },
+      { text: "Das Corpus geniculatum laterale (CGL) liegt im Kleinhirn.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Der ==Thalamus== ist die große Umschaltstelle — nur der ==Geruchssinn== läuft nicht über ihn. b) Richtig: Die ==Hypophyse== liegt ventral des Hypothalamus. c) Richtig: Der ==Hypothalamus== reguliert außerdem motivationale Verhaltensweisen wie ==Essen, Schlaf und Sexualität==. d) Falsch: Das ==CGL== ist eine Struktur im ==(dorsalen) Thalamus== und gehört zur ==Sehbahn==.",
+    merksatz: "==Thalamus = Tor zum Bewusstsein== (alle Sinne außer Riechen), ==Hypothalamus = Chef des autonomen Nervensystems==.",
+    beleg: "Kap. 4.3.3, S. 112",
+  },
+  {
+    id: "L4-11", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zum ==Telencephalon (Großhirn)== und zum ==cerebralen Cortex== sind korrekt?",
+    aussagen: [
+      { text: "Das Corpus callosum (Balken) verbindet die beiden Hemisphären; über es findet der Informationsaustausch statt.", istRichtig: true },
+      { text: "Der cerebrale Cortex ist nur etwa 2–5 Millimeter dick und besteht vorwiegend aus grauer Substanz.", istRichtig: true },
+      { text: "Die Furchung des Cortex verkleinert die Oberfläche des Großhirns.", istRichtig: false },
+      { text: "Die vier Lappen des cerebralen Cortex sind klar abgegrenzte funktionale Einheiten.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Das ==Corpus callosum== ist ein dicker Strang aus Nervenfasern zwischen den ==Hemisphären==. b) Richtig: Der ==cerebrale Cortex== (Großhirnrinde) ist die äußere Schicht des Großhirns. c) Falsch: Die starke ==Furchung vergrößert== die Oberfläche, ohne dass das Gesamtvolumen zunehmen muss. d) Falsch: Die vier Lappen kommen durch die ==Furchung== zustande und stellen ausdrücklich ==keine funktionalen Einheiten== dar.",
+    merksatz: "==Gefurcht = mehr Rinde auf gleichem Platz==; die vier Lappen sind ==Landkarte, keine Funktionsblöcke==.",
+    beleg: "Kap. 4.3.3, S. 112–113",
+  },
+  {
+    id: "L4-12", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zum ==Frontallappen== und zum ==präfrontalen Cortex== sind korrekt?",
+    aussagen: [
+      { text: "Die Frontallappen (Stirnlappen) liegen unter der Stirn und sind u. a. für Planung, Sprache, Sozialverhalten, Emotionsregulation und Bewegung essentiell.", istRichtig: true },
+      { text: "Der präfrontale Cortex wird häufig als Sitz der Persönlichkeit und des Sozialverhaltens bezeichnet.", istRichtig: true },
+      { text: "Im präfrontalen Cortex finden u. a. Aufmerksamkeit, Arbeitsgedächtnis, Handlungsplanung und Entscheidungsfindung statt.", istRichtig: true },
+      { text: "Der Hippocampus ist in den Frontallappen eingebettet.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: So beschreibt das Skript die ==Frontallappen==. b) Richtig: Der ==präfrontale Cortex== ist Teil des Frontallappens. c) Richtig: Dazu gehört auch die ==Kontrolle motivationaler und emotionaler Impulse== — genau das fehlte ==Phineas Gage== nach seinem Unfall. d) Falsch: Der ==Hippocampus== (Gedächtnis) und die ==Amygdala== (Emotion) sind in den ==Temporallappen== eingebettet.",
+    merksatz: "==Stirn = Steuerzentrale==: Planen, Entscheiden, Impulse bremsen — fällt sie aus, ändert sich die ==Persönlichkeit==.",
+    beleg: "Kap. 4.3.3, S. 113",
+  },
+  {
+    id: "L4-13", teil: "A", kapitel: 4, thema: "Gehirn", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zu ==Parietal-, Temporal- und Okzipitallappen== sind korrekt?",
+    aussagen: [
+      { text: "Die Parietallappen (Scheitellappen) sind an der Integration sensumotorischer Informationen sowie an Aufmerksamkeit und räumlicher Orientierung beteiligt.", istRichtig: true },
+      { text: "Empfindungen der rechten Körperseite werden im linken Parietallappen verarbeitet.", istRichtig: true },
+      { text: "In den Temporallappen (Schläfenlappen) liegen Regionen für das Hören sowie der Hippocampus und die Amygdala.", istRichtig: true },
+      { text: "Im Okzipitallappen (Hinterhauptlappen) liegt der primäre visuelle Cortex, das erste Hauptziel visueller Informationen.", istRichtig: true },
+    ],
+    erklaerung: "a) Richtig: Die ==Parietallappen== liegen hinter den Frontallappen und verarbeiten u. a. den ==Tastsinn==. b) Richtig: Die Verarbeitung ist ==kontralateral== — rechts fühlen, links verarbeiten. c) Richtig: Zusätzlich liegen dort spezialisierte ==visuelle Areale==, z. B. für das ==Erkennen von Gesichtern==. d) Richtig: Der ==primäre visuelle Cortex== ist das erste Hauptziel der Sehbahn. Alle vier Aussagen treffen zu.",
+    merksatz: "==Scheitel fühlt, Schläfe hört und erinnert, Hinterkopf sieht.==",
+    beleg: "Kap. 4.3.3, S. 113",
+  },
+  {
+    id: "L4-14", teil: "A", kapitel: 4, thema: "Retina", quelle: "generiert", schwierigkeit: 2,
+    stem: "Welche Aussagen zum Weg ==vom Lichteinfall zum neuronalen Signal== sind korrekt?",
+    aussagen: [
+      { text: "Die Umwandlung der Lichtenergie in neuronale Signale heißt Transduktion und findet in den Photorezeptorzellen statt.", istRichtig: true },
+      { text: "Die Müller-Zellen sind eine spezielle Art von Gliazellen in der Retina, die gestreutes Licht durch die Retina leiten.", istRichtig: true },
+      { text: "Das Licht trifft direkt auf die Photorezeptorzellen, ohne vorher andere Zellschichten passieren zu müssen.", istRichtig: false },
+      { text: "Die an die Aderhaut angrenzende Schicht der Retina besteht aus Ganglienzellen.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: ==Transduktion== = Licht → neuronales Signal, in ==Stäbchen und Zapfen==. b) Richtig: Die ==Müller-Zellen== leiten von Neuronen gestreutes Licht durch die Retina. c) Falsch: Die Photorezeptoren liegen in der ==äußeren Schicht== der Retina — das Licht muss erst durch die davorliegenden Zellschichten; weil diese ==relativ transparent== sind, ist die Bildverzerrung minimal. d) Falsch: Die an die Aderhaut angrenzende Schicht besteht aus ==Pigmentepithelzellen==.",
+    merksatz: "Die Retina ist ==verkehrt herum verkabelt==: Licht zuerst durch die Zellschichten, ==Photorezeptoren ganz hinten==.",
+    beleg: "Kap. 4.4.2, S. 117–118",
+  },
+  {
+    id: "L4-15", teil: "A", kapitel: 4, thema: "Sehbahn", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zum ==Chiasma opticum (Sehnervkreuzung)== sind korrekt?",
+    aussagen: [
+      { text: "Dort wechseln die Axone jener Zellen die Seite, die in der der Nase zugewandten Hälfte der Retina liegen.", istRichtig: true },
+      { text: "Objekte, die in der linken Gesichtsfeldhälfte wahrgenommen werden, werden in der rechten Gehirnhälfte repräsentiert.", istRichtig: true },
+      { text: "Am Chiasma opticum kreuzen sämtliche Axone beider Sehnerven auf die Gegenseite.", istRichtig: false },
+      { text: "Das Bild kommt auf der Retina ungespiegelt an.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Nur die ==nasalen== (der Nase zugewandten) Axone wechseln auf die ==kontralaterale== Seite. b) Richtig: Das ist die Folge von Kreuzung plus Spiegelung. c) Falsch: Die Axone von der ==äußeren (temporalen)== Seite bleiben auf ihrer Seite — es kreuzt also nur ein Teil. d) Falsch: Durch die ==Brechung des Lichts an der Linse== kommt das Bild auf der Retina ==gespiegelt== an.",
+    merksatz: "==Nasal kreuzt, temporal bleibt== — deshalb sieht die rechte Hemisphäre die ==linke Gesichtsfeldhälfte==.",
+    beleg: "Kap. 4.4.3, S. 120",
+  },
+  {
+    id: "L4-16", teil: "A", kapitel: 4, thema: "Sehbahn", quelle: "generiert", schwierigkeit: 3,
+    stem: "Welche Aussagen zum ==CGL== und zum ==primären visuellen Cortex (V1)== sind korrekt?",
+    aussagen: [
+      { text: "Der Großteil der Axone der Sehbahn wandert zum Corpus geniculatum laterale (CGL) im dorsalen Thalamus.", istRichtig: true },
+      { text: "Im CGL herrscht eine retinotrope Organisation: benachbarte Retinazellen übertragen ihre Informationen auf benachbarte Stellen im CGL.", istRichtig: true },
+      { text: "Der primäre visuelle Cortex (Areal V1) befindet sich beiderseits im Okzipitallappen und ist ebenfalls retinotrop organisiert.", istRichtig: true },
+      { text: "Im CGL werden die Informationen der beiden Augen sofort vollständig vermischt.", istRichtig: false },
+    ],
+    erklaerung: "a) Richtig: Das rechte ==CGL== erhält von beiden Augen Informationen über die ==linke Gesichtsfeldhälfte==, das linke CGL über die rechte. b) Richtig: Die ==Größenverhältnisse== bleiben dabei aber nicht erhalten — die ==Fovea== ist wegen ihrer hohen Rezeptordichte ==überproportional== repräsentiert. c) Richtig: Fasern vom rechten CGL treten in die rechte Hälfte von ==V1== ein, Fasern vom linken CGL in die linke; dort finden sich ==orientierungssensitive== und richtungssensitive Zellen. d) Falsch: Die Informationen der beiden Augen bleiben im CGL noch ==getrennt== — die Axone bilden Synapsen mit ==verschiedenen Zellschichten==.",
+    merksatz: "Sehbahn: ==Auge → Chiasma → CGL (Thalamus) → V1 im Okzipitallappen== — im CGL noch ==Auge für Auge getrennt==.",
+    beleg: "Kap. 4.4.3, S. 120–121",
+  },
+];

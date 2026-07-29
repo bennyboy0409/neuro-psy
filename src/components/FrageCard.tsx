@@ -1,5 +1,7 @@
+import { useState } from "react";
 import type { Frage } from "../types";
 import type { Antworten } from "../lib/scoring";
+import { lesetextZu } from "../lib/auswahl";
 import RichText from "./RichText";
 import Icon from "./Icon";
 
@@ -23,6 +25,10 @@ export default function FrageCard({
 }: Props) {
   const bewertung = frage.aussagen.map((a, i) => antworten[i] === a.istRichtig);
   const alleKorrekt = geprueft && bewertung.every(Boolean);
+
+  // Teil C: zugehoeriger englischer Lesetext, standardmaessig aufgeklappt
+  const text = lesetextZu(frage);
+  const [textOffen, setTextOffen] = useState(true);
 
   const teilStil =
     frage.teil === "A"
@@ -57,6 +63,44 @@ export default function FrageCard({
           </span>
         )}
       </div>
+
+      {/* Englischer Lesetext (nur Teil C) */}
+      {text && (
+        <div className="mb-4 rounded-2xl bg-amber-400/[0.05] ring-1 ring-amber-400/20 overflow-hidden">
+          <button
+            onClick={() => setTextOffen((o) => !o)}
+            className="w-full flex items-center gap-2 px-3.5 py-2.5 text-left active:bg-white/[0.03] transition"
+          >
+            <Icon name="book" size={15} className="text-amber-300 shrink-0" />
+            <span className="text-sm font-medium text-amber-100 flex-1">{text.titel}</span>
+            <span className={`text-amber-300/70 transition-transform ${textOffen ? "rotate-90" : ""}`}>
+              <Icon name="chevronRight" size={16} />
+            </span>
+          </button>
+
+          {textOffen && (
+            <div className="px-3.5 pb-3.5 animate-fade-up">
+              <div className="max-h-72 overflow-y-auto pr-1 space-y-2.5">
+                {text.absaetze.map((a, i) => (
+                  <p key={i} className="text-[14px] leading-relaxed text-slate-200">{a}</p>
+                ))}
+              </div>
+              {text.glossar && text.glossar.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-white/10">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-amber-300/80 mb-1.5">Vokabelhilfe</p>
+                  <ul className="space-y-1">
+                    {text.glossar.map((g, i) => (
+                      <li key={i} className="text-xs text-slate-400">
+                        <span className="text-amber-200 font-medium">{g.begriff}</span> — {g.erklaerung}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Fragetext */}
       <p className="text-[19px] leading-snug font-semibold text-white font-display">

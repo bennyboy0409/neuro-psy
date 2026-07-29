@@ -1,9 +1,36 @@
-/** Datum des Aufnahmetests. */
-export const TEST_DATUM = "2026-07-14";
+/**
+ * Voraussichtlicher Testtermin. Der genaue Termin wird von den Unis erst im
+ * Frühjahr bekanntgegeben — die Prüfung findet traditionell Mitte Juli statt.
+ * In der App unter "Termin ändern" anpassbar.
+ */
+export const TEST_DATUM_STANDARD = "2027-07-13";
+
+const TERMIN_KEY = "psy-trainer:termin";
+
+/** Der aktuell eingestellte Testtermin (eigener oder Standard). */
+export function testDatum(): string {
+  try {
+    const eigen = localStorage.getItem(TERMIN_KEY);
+    if (eigen && /^\d{4}-\d{2}-\d{2}$/.test(eigen)) return eigen;
+  } catch {
+    // localStorage nicht verfügbar -> Standard
+  }
+  return TEST_DATUM_STANDARD;
+}
+
+/** Eigenen Testtermin speichern (leerer String = zurück auf Standard). */
+export function setzeTestDatum(datum: string): void {
+  try {
+    if (datum) localStorage.setItem(TERMIN_KEY, datum);
+    else localStorage.removeItem(TERMIN_KEY);
+  } catch {
+    // ignorieren
+  }
+}
 
 /** Ganze Tage von heute bis zum Test (kann 0 oder negativ werden). */
 export function tageBisTest(): number {
-  return tageDazwischen(heute(), TEST_DATUM);
+  return tageDazwischen(heute(), testDatum());
 }
 
 // Lokales Datum als "yyyy-mm-dd" (ohne Zeitzonen-Verschiebung).
