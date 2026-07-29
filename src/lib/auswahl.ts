@@ -10,6 +10,10 @@ import { lueckenK123 } from "../data/lueckenK123";
 import { nachzuegler45 } from "../data/nachzuegler45";
 import { nachzuegler67 } from "../data/nachzuegler67";
 import { nachzuegler138 } from "../data/nachzuegler138";
+import { vertiefung45 } from "../data/vertiefung45";
+import { vertiefung37 } from "../data/vertiefung37";
+import { vertiefung67 } from "../data/vertiefung67";
+import { nachzueglerAufmerksamkeit } from "../data/nachzueglerAufmerksamkeit";
 import { teilB } from "../data/teilB";
 import { teilBDiagramme } from "../data/teilBDiagramme";
 import { fragenTeilC, lesetexte } from "../data/teilC";
@@ -31,6 +35,10 @@ export function alleFragen(): Frage[] {
     ...nachzuegler45,
     ...nachzuegler67,
     ...nachzuegler138,
+    ...vertiefung45,
+    ...vertiefung37,
+    ...vertiefung67,
+    ...nachzueglerAufmerksamkeit,
     ...teilB,
     ...teilBDiagramme,
     ...fragenTeilC,
