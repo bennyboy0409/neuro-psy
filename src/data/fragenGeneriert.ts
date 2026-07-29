@@ -105,11 +105,11 @@ export const fragenGeneriert: Frage[] = [
     aussagen: [
       { text: "Der Median ist robuster gegenüber Ausreißern als das arithmetische Mittel.", istRichtig: true },
       { text: "Das arithmetische Mittel ist die Summe aller Werte geteilt durch ihre Anzahl.", istRichtig: true },
-      { text: "Der Modus ist der am häufigsten vorkommende Wert.", istRichtig: true },
+      { text: "Der Modalwert (Modus) ist der am häufigsten vorkommende Wert.", istRichtig: true },
       { text: "Die Standardabweichung ist ein Lagemaß (Maß der zentralen Tendenz).", istRichtig: false },
     ],
-    erklaerung: "Median (a), Mittel (b) und Modus (c) sind korrekt beschrieben. Die ==Standardabweichung== ist ein ==Streuungsmaß==, kein Lagemaß (d falsch).",
-    merksatz: "==Median/Mittel/Modus== = Lage; ==Standardabweichung/Varianz== = Streuung.",
+    erklaerung: "Median (a), Mittel (b) und Modalwert (c) sind korrekt beschrieben. Die ==Standardabweichung== ist ein ==Streuungsmaß==, kein Lagemaß (d falsch).",
+    merksatz: "==Median/Mittel/Modalwert== = Lage; ==Standardabweichung/Varianz== = Streuung.",
   },
   {
     id: "G3-3", teil: "A", kapitel: 3, thema: "Korrelation", quelle: "generiert", schwierigkeit: 2,
@@ -166,12 +166,12 @@ export const fragenGeneriert: Frage[] = [
     stem: "Welche Aussagen zum ==Nervensystem== sind korrekt?",
     aussagen: [
       { text: "Das zentrale Nervensystem (ZNS) besteht aus Gehirn und Rückenmark.", istRichtig: true },
-      { text: "Der Sympathikus aktiviert den Körper (Kampf oder Flucht).", istRichtig: true },
-      { text: "Der Parasympathikus ist für Erholung und Verdauung zuständig.", istRichtig: true },
+      { text: "Das sympathische Nervensystem (Sympathikus) aktiviert den Körper (Kampf oder Flucht).", istRichtig: true },
+      { text: "Das parasympathische Nervensystem (Parasympathikus) ist für Erholung und Verdauung zuständig.", istRichtig: true },
       { text: "Das somatische Nervensystem steuert ausschließlich unwillkürliche Organe.", istRichtig: false },
     ],
-    erklaerung: "ZNS = Gehirn + Rückenmark (a), Sympathikus aktiviert (b), Parasympathikus beruhigt (c). Das ==somatische== NS steuert die ==willkürliche== Muskulatur; unwillkürliche Organe steuert das vegetative NS (d falsch).",
-    merksatz: "==Sympathikus== = Gas, ==Parasympathikus== = Bremse; ==somatisch = willkürlich==.",
+    erklaerung: "ZNS = Gehirn + Rückenmark (a), das sympathische Nervensystem aktiviert (b), das parasympathische Nervensystem beruhigt (c). Das ==somatische== NS steuert die ==willkürliche== Muskulatur; unwillkürliche Organe steuert das vegetative NS (d falsch).",
+    merksatz: "==sympathisches Nervensystem== = Gas, ==parasympathisches Nervensystem== = Bremse; ==somatisch = willkürlich==.",
   },
   {
     id: "G4-4", teil: "A", kapitel: 4, thema: "Visuelles System", quelle: "generiert", schwierigkeit: 3,
@@ -249,7 +249,7 @@ export const fragenGeneriert: Frage[] = [
     ],
     erklaerung: "Objektpermanenz = ==sensumotorisch== (a; Achtung: das Skript schreibt sensuMotorisch). Im ==präoperatorischen== Stadium zeigt sich ==Animismus== — unbelebten Dingen werden Absichten und Leben zugeschrieben (b). Die ==Erhaltung== wird im ==konkret-operatorischen== Stadium verstanden (c). Abstrakt-hypothetisches Denken kommt erst im ==formal-operatorischen== Stadium (d falsch).",
     beleg: "Kap. 6.3.1, S. 173–177",
-    merksatz: "sensomotorisch=Objektpermanenz · präop.=egozentrisch · konkret=Erhaltung · formal=abstrakt.",
+    merksatz: "sensumotorisch=Objektpermanenz · präop.=egozentrisch · konkret=Erhaltung · formal=abstrakt.",
   },
   {
     id: "G6-2", teil: "A", kapitel: 6, thema: "Erikson", quelle: "generiert", schwierigkeit: 2,
@@ -270,10 +270,10 @@ export const fragenGeneriert: Frage[] = [
       { text: "Die 'Fremde Situation' (Ainsworth) erfasst Bindungsmuster.", istRichtig: true },
       { text: "Ein sicher gebundenes Kind lässt sich nach einer Trennung gut trösten.", istRichtig: true },
       { text: "Unsicher-vermeidend gebundene Kinder zeigen bei Belastung kaum Bindungsverhalten.", istRichtig: true },
-      { text: "Bindungsmuster sind angeboren und unabhängig von der Feinfühligkeit der Bezugsperson.", istRichtig: false },
+      { text: "Bindungsmuster sind angeboren und unabhängig von der Sensitivität (Feinfühligkeit) der Bezugsperson.", istRichtig: false },
     ],
-    erklaerung: "Die ==Fremde Situation== misst Bindung (a), sicher = gut tröstbar (b), unsicher-vermeidend = wenig Bindungsverhalten (c). Bindung entsteht v. a. über die ==Feinfühligkeit== der Bezugsperson, ist nicht angeboren (d falsch).",
-    merksatz: "==Fremde Situation== (Ainsworth) misst Bindung; sie entsteht über ==Feinfühligkeit==.",
+    erklaerung: "Die ==Fremde Situation== misst Bindung (a), sicher = gut tröstbar (b), unsicher-vermeidend = wenig Bindungsverhalten (c). Bindung entsteht v. a. über die ==Sensitivität== der Bezugsperson, ist nicht angeboren (d falsch).",
+    merksatz: "==Fremde Situation== (Ainsworth) misst Bindung; sie entsteht über ==Sensitivität==.",
   },
 
   // ---------- Kapitel 7 ----------

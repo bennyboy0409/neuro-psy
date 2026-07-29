@@ -11,18 +11,18 @@ import type { Frage } from "../types";
 export const teilB: Frage[] = [
   // ---------- Kennwerte ----------
   {
-    id: "TB-1", teil: "B", aufgabentyp: "Kennwerte", thema: "Median/Mittel/Modus", quelle: "generiert", schwierigkeit: 1,
+    id: "TB-1", teil: "B", aufgabentyp: "Kennwerte", thema: "Median/Mittel/Modalwert", quelle: "generiert", schwierigkeit: 1,
     stem: "Gegeben ist die Datenreihe D. Welche Aussagen treffen zu?",
     stemZusatz: "D = [2, 3, 3, 5, 7]",
     aussagen: [
-      { text: "Der Modus ist 3.", istRichtig: true },
+      { text: "Der Modalwert (Modus) ist 3.", istRichtig: true },
       { text: "Der Median ist 4.", istRichtig: false },
       { text: "Das arithmetische Mittel ist 4.", istRichtig: true },
       { text: "Die Spannweite ist 7.", istRichtig: false },
     ],
     erklaerung:
-      "a) ==Modus== = häufigster Wert. Die 3 kommt zweimal vor, alle anderen einmal → Modus = 3 (richtig). b) ==Median==: die Reihe ist schon sortiert, n = 5 → der ==3. Wert== = 3, nicht 4 (falsch). c) ==Mittel== = (2+3+3+5+7) / 5 = 20 / 5 = ==4== (richtig). d) ==Spannweite== = größter − kleinster Wert = 7 − 2 = ==5==, nicht 7 (falsch).",
-    merksatz: "==Modus== = häufigster Wert, ==Median== = mittlerer Wert (sortiert!), ==Spannweite== = max ==minus== min.",
+      "a) ==Modalwert== = häufigster Wert. Die 3 kommt zweimal vor, alle anderen einmal → Modalwert = 3 (richtig). b) ==Median==: die Reihe ist schon sortiert, n = 5 → der ==3. Wert== = 3, nicht 4 (falsch). c) ==Mittel== = (2+3+3+5+7) / 5 = 20 / 5 = ==4== (richtig). d) ==Spannweite== = größter − kleinster Wert = 7 − 2 = ==5==, nicht 7 (falsch).",
+    merksatz: "==Modalwert== = häufigster Wert, ==Median== = mittlerer Wert (sortiert!), ==Spannweite== = max ==minus== min.",
   },
   {
     id: "TB-2", teil: "B", aufgabentyp: "Kennwerte", thema: "Gerade Anzahl", quelle: "generiert", schwierigkeit: 2,
@@ -31,7 +31,7 @@ export const teilB: Frage[] = [
     aussagen: [
       { text: "Der Median ist 5.", istRichtig: true },
       { text: "Das arithmetische Mittel ist kleiner als der Median.", istRichtig: false },
-      { text: "Der Modus ist 6.", istRichtig: false },
+      { text: "Der Modalwert (Modus) ist 6.", istRichtig: false },
       { text: "Die Spannweite beträgt 10.", istRichtig: true },
     ],
     erklaerung:
@@ -74,12 +74,12 @@ export const teilB: Frage[] = [
     stemZusatz: "A = { 1, 2, 1, 3, 2, 1, 1, 3, 2, 1 }",
     aussagen: [
       { text: "Die Antwort 1 wurde genau so oft gegeben wie 2 und 3 zusammen.", istRichtig: true },
-      { text: "Der Modus ist 1.", istRichtig: true },
+      { text: "Der Modalwert (Modus) ist 1.", istRichtig: true },
       { text: "Die Antwort 3 macht 30 % aller Antworten aus.", istRichtig: false },
       { text: "Die Antwort 2 wurde viermal gegeben.", istRichtig: false },
     ],
     erklaerung:
-      "Auszählen: ==1 → 5×==, ==2 → 3×==, ==3 → 2×== (zusammen 10 ✓). a) 5 = 3 + 2 → genau gleich viele (richtig). b) 5 ist die größte Häufigkeit → ==Modus = 1== (richtig). c) 2 von 10 = ==20 %==, nicht 30 % (falsch). d) Die 2 kam ==dreimal== vor (falsch).",
+      "Auszählen: ==1 → 5×==, ==2 → 3×==, ==3 → 2×== (zusammen 10 ✓). a) 5 = 3 + 2 → genau gleich viele (richtig). b) 5 ist die größte Häufigkeit → ==Modalwert = 1== (richtig). c) 2 von 10 = ==20 %==, nicht 30 % (falsch). d) Die 2 kam ==dreimal== vor (falsch).",
     merksatz: "Erst eine ==Strichliste== pro Antwortmöglichkeit machen, dann erst die Aussagen prüfen.",
   },
   {
