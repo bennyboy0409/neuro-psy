@@ -5,10 +5,12 @@ node_modules
 dist
 dist-ssr
 
-# rohdaten & pipeline (gross, nicht ins repo)
-data/*.pdf
-data/beispiele_img/
-data/skript_img/
+# Rohdaten der Uni — URHEBERRECHTLICH GESCHUETZT, gehoert NICHT ins oeffentliche Repo.
+# Das Lernskript und die Beispielitems duerfen nur zur eigenen Pruefungsvorbereitung
+# genutzt, aber nicht weiterverbreitet werden (Rechte: Fachbereich Psychologie,
+# Paris Lodron Universitaet Salzburg). Lokal bleiben die Dateien natuerlich liegen.
+data/
+!data/.gitkeep
 
 # editor / os
 .DS_Store
